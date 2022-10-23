@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "jakarta-bold";
+  src: url("../public/fonts/static/PlusJakartaSans-Bold.ttf")
+}
+
+@layer base {
+  * {
+    @apply p-0 m-0;
+  }
+
+  a {
+    @apply no-underline;
+  }
+}
+
+@layer components {
+  .main-content {
+    @apply ml-80 mt-16;
+  }
+
+  .bottom-border {
+    @apply border-b border-border-color border-solid;
+  }
+
+  .right-border {
+    @apply border-r border-border-color border-solid;
+  }
+
+  .round-button {
+    @apply absolute rounded-full h-[calc(100%-6px)] w-[calc(100%-6px)];
+  }
+}
