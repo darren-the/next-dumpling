@@ -18,7 +18,7 @@ const NavbarDesktop = () => {
     <Link href={`/${id}`} key={id}>
       <a 
         className={
-          `font-jakarta-bold text-base py-2 pl-4 border-l-4 border-solid transition-all duration-300
+          `font-jakarta-bold text-base py-2 pl-4 border-l-4 border-solid prim-trans w-[fit-content]
           ${router.asPath === '/' + id ? styles.active : styles.inactive}`
         }
       >{menuNames[id]}</a>
@@ -26,7 +26,7 @@ const NavbarDesktop = () => {
   )
 
   return (
-    <div className="fixed top-0 left-0 flex flex-col w-[313px] h-screen right-border">
+    <div className="fixed tl flex flex-col w-[313px] h-screen right-border">
       <Link href="/">
         <a className="bottom-border">
           <Image

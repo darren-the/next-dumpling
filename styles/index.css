@@ -19,7 +19,7 @@
 
 @layer components {
   .main-content {
-    @apply ml-80 mt-16;
+    @apply ml-80 mt-[60px];
   }
 
   .bottom-border {
@@ -32,5 +32,21 @@
 
   .round-button {
     @apply absolute rounded-full h-[calc(100%-6px)] w-[calc(100%-6px)];
+  }
+
+  .prim-trans {
+    @apply transition-all duration-300;
+  }
+
+  .centering {
+    @apply flex flex-row justify-center items-center;
+  }
+
+  .tl {
+    @apply top-0 left-0;
+  }
+
+  .br {
+    @apply bottom-0 right-0;
   }
 }
