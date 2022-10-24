@@ -6,7 +6,10 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
+      'jakarta-extrabold': ['jakarta-extrabold'],
       'jakarta-bold': ['jakarta-bold'],
+      'jakarta-medium': ['jakarta-medium'],
+      'jakarta-regular': ['jakarta-regular'],
     },
     extend: {
       colors: {
@@ -14,9 +17,6 @@ module.exports = {
         'custom-darkgray': '#6a6a6a',
         'custom-lightgray': '#e7e7e7',
         'border-color': '#d3d3d3'
-      },
-      transitionProperty: {
-        'button-animation': 'top, bottom, right, left',
       },
     },
   },

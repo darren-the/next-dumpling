@@ -3,8 +3,23 @@
 @tailwind utilities;
 
 @font-face {
+  font-family: "jakarta-extrabold";
+  src: url("../public/fonts/static/PlusJakartaSans-ExtraBold.ttf")
+}
+
+@font-face {
   font-family: "jakarta-bold";
   src: url("../public/fonts/static/PlusJakartaSans-Bold.ttf")
+}
+
+@font-face {
+  font-family: "jakarta-medium";
+  src: url("../public/fonts/static/PlusJakartaSans-Medium.ttf")
+}
+
+@font-face {
+  font-family: "jakarta-regular";
+  src: url("../public/fonts/static/PlusJakartaSans-Regular.ttf")
 }
 
 @layer base {
@@ -14,6 +29,22 @@
 
   a {
     @apply no-underline;
+  }
+
+  .base-extrabold-text {
+    @apply font-jakarta-extrabold text-base text-black;
+  }
+
+  .base-bold-text {
+    @apply font-jakarta-bold text-base text-black;
+  }
+
+  .base-medium-text {
+    @apply font-jakarta-medium text-base text-black;
+  }
+
+  .base-regular-text {
+    @apply font-jakarta-regular text-base text-black;
   }
 }
 

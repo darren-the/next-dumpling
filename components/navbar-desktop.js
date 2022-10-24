@@ -18,7 +18,7 @@ const NavbarDesktop = () => {
     <Link href={`/${id}`} key={id}>
       <a 
         className={
-          `font-jakarta-bold text-base py-2 pl-4 border-l-4 border-solid prim-trans w-[fit-content]
+          `text-base py-2 pl-4 border-l-4 border-solid prim-trans w-[fit-content]
           ${router.asPath === '/' + id ? styles.active : styles.inactive}`
         }
       >{menuNames[id]}</a>
@@ -26,7 +26,7 @@ const NavbarDesktop = () => {
   )
 
   return (
-    <div className="fixed tl flex flex-col w-[313px] h-screen right-border">
+    <div className="fixed tl flex flex-col w-[313px] h-screen right-border select-none">
       <Link href="/">
         <a className="bottom-border">
           <Image
@@ -38,12 +38,44 @@ const NavbarDesktop = () => {
         </a>
       </Link>
       
-      <div className="py-8 px-6 flex flex-col select-none">
+      <div className="py-8 px-6 flex flex-col">
         {menu}
       </div>
       
       <div className="px-6 pb-8 bottom-border">
         <Button href="https://dumpling.beehiiv.com/"/>
+      </div>
+
+      <div className="p-6 bottom-border">
+        <a href="/" className="flex flex-row w-[fit-content]">
+          <Image src="/assets/search-icon.svg" alt="search icon" width={14} height={16} />
+          <p className="base-bold-text ml-6">Search</p>
+        </a>
+      </div>
+
+      <div className="p-6 bottom-border">
+        <a href="/" className="flex flex-row w-[fit-content]">
+          <Image src="/assets/about-icon.svg" alt="search icon" width={20} height={20} />
+          <p className="base-bold-text ml-4">About</p>
+        </a>
+      </div>
+
+      <div className="p-6 flex flex-row justify-between items-center">
+        <a 
+          href="https://discord.com/invite/fortunefriendsclub" 
+          className="bg-custom-blue centering h-10 w-[127px] rounded-full hover:bg-[#85a0d1]"
+        >
+          <Image src="/assets/discord-icon.svg" alt="discord icon" width={20} height={14}/>
+          <p className="font-jakarta-bold text-white text-sm ml-4">Discuss</p>
+        </a>
+
+        <a 
+          href="https://twitter.com/FortuneFriends_" 
+          className="bg-custom-blue centering h-10 w-[127px] rounded-full hover:bg-[#85a0d1]"
+        >
+          <Image src="/assets/twitter-icon.svg" alt="discord icon" width={18} height={14}/>
+          <p className="font-jakarta-bold text-white text-sm ml-4">Follow</p>
+        </a>
       </div>
 
     </div>

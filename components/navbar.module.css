@@ -1,7 +1,7 @@
 .active {
-  @apply text-neutral-900 my-1 border-custom-blue;
+  @apply font-jakarta-bold text-neutral-900 my-1 border-custom-blue;
 }
 
 .inactive {
-  @apply text-zinc-500 my-0 border-custom-lightgray;
+  @apply font-jakarta-regular text-zinc-500 my-0 border-custom-lightgray;
 }
