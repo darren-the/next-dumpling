@@ -1,6 +1,10 @@
 import Head from 'next/head'
+import axios from 'axios'
+import { splitContentByType } from '../utils/content-utils'
+import { getContent } from '../modules/contentful/content'
 
-const Index = () => {
+const Index = ({ content }) => {
+  console.log(content)
   return (
     <div>
       <Head>
@@ -11,6 +15,14 @@ const Index = () => {
       Home page
     </div>
   )
+}
+
+export const getStaticProps = async () => {
+  const content = await getContent()
+  // const splitContent = splitContentByType(content)
+  return {
+    props: { 'content': content },
+  }
 }
 
 export default Index
