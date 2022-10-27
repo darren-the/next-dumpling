@@ -16,9 +16,18 @@ module.exports = {
         'custom-blue': '#88aef8',
         'custom-darkgray': '#6a6a6a',
         'custom-lightgray': '#e7e7e7',
-        'border-color': '#d3d3d3'
+        'custom-bg-gray': '#f5f5f5',
+        'border-color': '#d3d3d3',
+      },
+      gridTemplateAreas: {
+        'home': [
+          'news interviews',
+          'news rss',
+        ]
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@savvywombat/tailwindcss-grid-areas'),
+  ],
 }

@@ -50,7 +50,7 @@
 
 @layer components {
   .main-content {
-    @apply ml-80 mt-[60px];
+    @apply ml-[313px] mt-[60px] w-[1fr] bg-custom-bg-gray overflow-x-hidden;
   }
 
   .bottom-border {
