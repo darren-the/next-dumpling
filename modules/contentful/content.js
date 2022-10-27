@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { contentfulOptions } from './contentful-options'
 
 export const getContent = async () => {
     // Fetching Contentful articles

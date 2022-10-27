@@ -1,0 +1,8 @@
+.contentfulText {
+  @apply font-jakarta-medium text-sm leading-6 text-custom-darkgray mt-5;
+}
+
+.contentfulHeading {
+  @apply font-jakarta-medium text-custom-darkgray font-[normal] mt-5;
+}
+
