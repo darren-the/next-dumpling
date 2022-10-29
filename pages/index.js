@@ -1,9 +1,19 @@
 import Head from 'next/head'
-import axios from 'axios'
-import { splitContentByType } from '../utils/content-utils'
-import { getContent } from '../modules/contentful/content'
+import { getContent, splitContentByType } from '../modules/contentful/content'
+import Link from 'next/link'
+import LargeCard from '../components/cards/large-card'
+import Header from '../components/header'
 
-const Index = ({ content }) => {
+const Index = ({ contentJSON }) => {
+  const { news, interviews } = JSON.parse(contentJSON)
+
+  // Create large news card
+  const largeNewsCard = (news && news.length > 0) ? (
+    <Link href={`/news/${news[0]['content-id']}`}>
+      <a><LargeCard content={news[0]} borderBottom={true} /></a>
+    </Link>
+  ) : null
+
   return (
     <div>
       <Head>
@@ -14,27 +24,32 @@ const Index = ({ content }) => {
       
       <div className="flex justify-center p-8">
         <div className="w-full grid grid-areas-home">
-          <div className="grid-in-news">
-            News placeholder
+
+          <div className="grid-in-news flex flex-col max-w-[700px] mr-4">
+            <Header contentType="news" />
+            {largeNewsCard}
           </div>
+
           <div className="grid-in-interviews">
             Interviews placeholder
           </div>
+
           <div className='grid-in-rss'>
             RSS placeholder
           </div>
+          
         </div>
       </div>
-
     </div>
   )
 }
 
 export const getStaticProps = async () => {
   const content = await getContent()
-  // const splitContent = splitContentByType(content)
+  const splitContent = splitContentByType(content)
+  const contentJSON = JSON.stringify(splitContent)
   return {
-    props: { 'content': JSON.stringify(content) },
+    props: { contentJSON },
   }
 }
 
