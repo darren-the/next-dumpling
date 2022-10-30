@@ -3,6 +3,7 @@ import { getContent, splitContentByType } from '../modules/contentful/content'
 import Link from 'next/link'
 import LargeCard from '../components/cards/large-card'
 import Header from '../components/header'
+import SmallCard from '../components/cards/small-card'
 
 const Index = ({ contentJSON }) => {
   const { news, interviews } = JSON.parse(contentJSON)
@@ -13,6 +14,14 @@ const Index = ({ contentJSON }) => {
       <a><LargeCard content={news[0]} borderBottom={true} /></a>
     </Link>
   ) : null
+
+  // Create small news cards
+  const smallNewsCards = (news && news.length > 1) ? news.slice(1).map((item) =>
+  <Link href={`/news/${item['content-id']}`}>
+    <a><SmallCard content={item} /></a>
+  </Link>
+  ) : null
+    
 
   return (
     <div>
@@ -28,6 +37,7 @@ const Index = ({ contentJSON }) => {
           <div className="grid-in-news flex flex-col max-w-[700px] mr-4">
             <Header contentType="news" />
             {largeNewsCard}
+            {smallNewsCards}
           </div>
 
           <div className="grid-in-interviews">
