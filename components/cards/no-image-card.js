@@ -1,6 +1,6 @@
+import { limitStrLength } from '../../utils/string-utils'
 import Tag from '../tag'
 import Metadata from './metadata'
-import { limitSize } from './size-limit'
 
 const NoImageCard = ({
     borderBottom,
@@ -11,7 +11,7 @@ const NoImageCard = ({
       <div className="flex flex-col justify-center basis-60 grow">
         <Tag className="h-4" contentType={content.contentType} tag={content.tag} />
         <h2 className="base-extrabold-text my-[0.2em]">{content.title}</h2>
-        <p className="mb-[6px] text-medium-sm-darkgray">{limitSize(content.description)}</p>
+        <p className="mb-[6px] text-medium-sm-darkgray">{limitStrLength(content.description)}</p>
         <div className=""><Metadata author={content.author} published={content.published}/></div>
       </div>
     </div>

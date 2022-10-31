@@ -32,5 +32,4 @@ export const getRSS = async () => {
   const aggFeeds = [].concat(...feeds)
   const sortedFeeds = aggFeeds.sort((a, b) => Date.parse(b.published) - Date.parse(a.published))
   return sortedFeeds
-  
 }
