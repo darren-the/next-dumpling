@@ -2,6 +2,7 @@ import Tag from '../tag'
 import Image from 'next/image'
 import Metadata from './metadata'
 import styles from './cards.module.css'
+import { limitSize } from './size-limit'
 
 const SmallCard = ({
     borderBottom,
@@ -15,7 +16,7 @@ const SmallCard = ({
       <div className="flex flex-col justify-center ml-4 basis-60 grow">
         <Tag className="h-4" contentType={content.contentType} tag={content.tag} />
         <h2 className="base-extrabold-text my-[0.2em]">{content.title}</h2>
-        <p className="mb-[6px]">{content.description}</p>
+        <p className="mb-[6px] text-medium-sm-darkgray w-fit">{limitSize(content.description)}</p>
         <div className=""><Metadata author={content.author} published={content.published}/></div>
       </div>
     </div>

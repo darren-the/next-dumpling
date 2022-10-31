@@ -8,7 +8,7 @@ const Tag = ({ contentType, tag, className }) => {
 export default Tag
 
 Tag.defaultProps = {
-  contentType: 'Content Type',
-  tag: 'Tag',
+  contentType: 'INSERT CONTENT TYPE',
+  tag: 'INSERT TAG',
   className: '',
 }

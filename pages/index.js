@@ -1,11 +1,14 @@
 import Head from 'next/head'
 import { getContent, splitContentByType } from '../modules/contentful/content'
 import Link from 'next/link'
-import LargeCard from '../components/cards/large-card'
 import Header from '../components/header'
+import LargeCard from '../components/cards/large-card'
+import MediumCard from '../components/cards/medium-card'
 import SmallCard from '../components/cards/small-card'
+import { getRSS } from '../modules/rss/rss'
+import NoImageCard from '../components/cards/no-image-card'
 
-const Index = ({ contentJSON }) => {
+const Index = ({ contentJSON, RSS }) => {
   const { news, interviews } = JSON.parse(contentJSON)
 
   // Create large news card
@@ -16,12 +19,25 @@ const Index = ({ contentJSON }) => {
   ) : null
 
   // Create small news cards
-  const smallNewsCards = (news && news.length > 1) ? news.slice(1).map((item) =>
-  <Link href={`/news/${item['content-id']}`}>
+  const smallNewsCards = (news && news.length > 1) ? news.slice(1).map((item, index) =>
+  <Link href={`/news/${item['content-id']}`} key={index}>
     <a><SmallCard content={item} /></a>
   </Link>
   ) : null
-    
+
+  // Create interview cards
+  const interviewCards = (interviews && interviews.length > 0) ? interviews.slice(0, process.env.homeInterviewLimit).map((item, index) =>
+    <Link href={`/interviews/${item['content-id']}`} key={index}>
+      <a><MediumCard content={news[0]} borderBottom={true} /></a>
+    </Link>
+  ) : null
+  
+  // Create RSS cards
+  const RSSCards = (RSS && RSS.length > 0) ? RSS.slice(0, process.env.homeRSSLimit).map((item, index) =>
+    <a href={item.link} key={index}>
+      <NoImageCard content={item} />
+    </a>
+  ) : null
 
   return (
     <div>
@@ -32,7 +48,7 @@ const Index = ({ contentJSON }) => {
       </Head>
       
       <div className="flex justify-center p-8">
-        <div className="w-full grid grid-areas-home">
+        <div className="w-full grid grid-areas-home justify-evenly">
 
           <div className="grid-in-news flex flex-col max-w-[700px] mr-4">
             <Header contentType="news" />
@@ -40,12 +56,13 @@ const Index = ({ contentJSON }) => {
             {smallNewsCards}
           </div>
 
-          <div className="grid-in-interviews">
-            Interviews placeholder
+          <div className="grid-in-interviews home-desktop-right">
+            <Header contentType="interviews" />
+            {interviewCards}
           </div>
 
-          <div className='grid-in-rss'>
-            RSS placeholder
+          <div className='grid-in-rss home-desktop-right'>
+            {RSSCards}
           </div>
           
         </div>
@@ -55,11 +72,17 @@ const Index = ({ contentJSON }) => {
 }
 
 export const getStaticProps = async () => {
+
+  // fetch content
   const content = await getContent()
   const splitContent = splitContentByType(content)
   const contentJSON = JSON.stringify(splitContent)
+
+  //fetch rss
+  const RSS = await getRSS()
+
   return {
-    props: { contentJSON },
+    props: { contentJSON, RSS },
   }
 }
 

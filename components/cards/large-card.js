@@ -14,7 +14,7 @@ const LargeCard = ({
         <Image src={`https:${content.banner}`} className="object-cover" layout="fill"/>
       </div>
       <h2 className="text-2xl font-jakarta-bold text-black">{content.title}</h2>
-      <p className="pt-[0.3rem] mb-9">{content.description}</p>
+      <p className="pt-[0.3rem] mb-9 text-medium-sm-darkgray">{content.description}</p>
       <div className="mb-6"><Metadata author={content.author} published={content.published}/></div>
     </div>
   )
