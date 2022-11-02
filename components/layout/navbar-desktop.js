@@ -64,6 +64,8 @@ const NavbarDesktop = () => {
         <a 
           href="https://discord.com/invite/fortunefriendsclub" 
           className="bg-custom-blue centering h-10 w-[127px] rounded-full hover:bg-[#85a0d1]"
+          target="_blank"
+          rel="noreferrer"
         >
           <Image src="/assets/discord-icon.svg" alt="discord icon" width={20} height={14}/>
           <p className="font-jakarta-bold text-white text-sm ml-4">Discuss</p>
@@ -72,6 +74,8 @@ const NavbarDesktop = () => {
         <a 
           href="https://twitter.com/FortuneFriends_" 
           className="bg-custom-blue centering h-10 w-[127px] rounded-full hover:bg-[#85a0d1]"
+          target="_blank"
+          rel="noreferrer"
         >
           <Image src="/assets/twitter-icon.svg" alt="discord icon" width={18} height={14}/>
           <p className="font-jakarta-bold text-white text-sm ml-4">Follow</p>
