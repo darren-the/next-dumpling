@@ -8,8 +8,9 @@ import SmallCard from '../components/cards/small-card'
 import { getRSS } from '../modules/rss/rss'
 import NoImageCard from '../components/cards/no-image-card'
 
-const Index = ({ contentJSON, RSS }) => {
-  const { news, interviews } = JSON.parse(contentJSON)
+const Index = ({ newsJSON, interviewsJSON, RSS }) => {
+  const news = JSON.parse(newsJSON)
+  const interviews = JSON.parse(interviewsJSON)
 
   // Create large news card
   const largeNewsCard = (news && news.length > 0) ? (
@@ -20,9 +21,9 @@ const Index = ({ contentJSON, RSS }) => {
 
   // Create small news cards
   const smallNewsCards = (news && news.length > 1) ? news.slice(1).map((item, index) =>
-  <Link href={`/news/${item['content-id']}`} key={index}>
-    <a><SmallCard content={item} /></a>
-  </Link>
+    <Link href={`/news/${item['content-id']}`} key={index}>
+      <a><SmallCard content={item} /></a>
+    </Link>
   ) : null
 
   // Create interview cards
@@ -74,15 +75,16 @@ const Index = ({ contentJSON, RSS }) => {
 export const getStaticProps = async () => {
 
   // fetch content
-  const content = await getContent()
-  const splitContent = splitContentByType(content)
-  const contentJSON = JSON.stringify(splitContent)
+  const news = await getContent('news')
+  const newsJSON = JSON.stringify(news)
+  const interviews = await getContent('interviews')
+  const interviewsJSON = JSON.stringify(interviews)
 
   //fetch rss
   const RSS = await getRSS()
 
   return {
-    props: { contentJSON, RSS },
+    props: { newsJSON, interviewsJSON, RSS },
   }
 }
 

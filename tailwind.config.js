@@ -25,6 +25,9 @@ module.exports = {
           'news rss',
         ]
       },
+      gridTemplateColumns: {
+        'preview': 'repeat(2, minmax(auto, 500px))'
+      }
     },
   },
   plugins: [
