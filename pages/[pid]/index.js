@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import LargeCard from '../components/cards/large-card'
-import Header from '../components/header'
-import { getContent } from '../modules/contentful/content'
+import LargeCard from '../../components/cards/large-card'
+import Header from '../../components/header'
+import { getContent } from '../../modules/contentful/content'
 
 const Preview = ({ contentJSON }) => {
   const route = useRouter().asPath.slice(1)
@@ -18,7 +18,7 @@ const Preview = ({ contentJSON }) => {
   
 
   return (
-    <div className="w-full grid grid-cols-preview justify-evenly">
+    <div className="p-8 w-full grid grid-cols-preview justify-evenly">
       <Header contentType={route} />
       <div className="w-full h-full"></div>
       {contentCards}

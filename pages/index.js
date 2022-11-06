@@ -14,21 +14,21 @@ const Index = ({ newsJSON, interviewsJSON, RSS }) => {
 
   // Create large news card
   const largeNewsCard = (news && news.length > 0) ? (
-    <Link href={`/news/${news[0]['content-id']}`}>
+    <Link href={`/news/${news[0]['contentfulId']}`}>
       <a><LargeCard content={news[0]} borderBottom={true} /></a>
     </Link>
   ) : null
 
   // Create small news cards
   const smallNewsCards = (news && news.length > 1) ? news.slice(1).map((item, index) =>
-    <Link href={`/news/${item['content-id']}`} key={index}>
+    <Link href={`/news/${item['contentfulId']}`} key={index}>
       <a><SmallCard content={item} /></a>
     </Link>
   ) : null
 
   // Create interview cards
   const interviewCards = (interviews && interviews.length > 0) ? interviews.slice(0, process.env.homeInterviewLimit).map((item, index) =>
-    <Link href={`/interviews/${item['content-id']}`} key={index}>
+    <Link href={`/interviews/${item['contentfulId']}`} key={index}>
       <a><MediumCard content={news[0]} borderBottom={true} /></a>
     </Link>
   ) : null

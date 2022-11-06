@@ -2,8 +2,9 @@ import axios from 'axios'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { contentfulOptions } from './contentful-options'
 
-export const getContent = async (contentType) => {
-  const response = await axios.get(process.env.baseURL + `/contentful/${contentType}`)
+export const getContent = async (contentType, id) => {
+  const url = process.env.baseURL + `/contentful/${contentType}`
+  const response = (id) ? await axios.get(`${url}?=${id}`) : await axios.get(url)
 
   const content = response.data.map((item) => {
     return {
@@ -17,6 +18,11 @@ export const getContent = async (contentType) => {
 
   return contentSorted
 }
+
+export const getContentIds = async (contentType) => {
+  const response = await axios.get(process.env.baseURL + `/contentful/${contentType}/?onlyIds=1`)
+  return response.data.ids
+} 
 
 // export const splitContentByType = (content) => {
 //     // sort content by date in descending order
