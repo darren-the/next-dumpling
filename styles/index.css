@@ -50,6 +50,10 @@
   .text-medium-sm-darkgray {
     @apply font-jakarta-medium text-sm leading-6 text-custom-darkgray;
   }
+
+  .heading-extrabold {
+    @apply text-[2rem] font-jakarta-extrabold text-black;
+  }
 }
 
 @layer components {

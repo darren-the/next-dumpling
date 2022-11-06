@@ -46,17 +46,13 @@ export const contentfulOptions = {
         // const defaultHeight = node.data.target.fields.file.details.image.height
         // const defaultWidth = node.data.target.fields.file.details.image.width
         return (
-            <div className="flex w-full justify-center">
-                {/* <CustomImage
-                    src={`https://${node.data.target.fields.file.url}`}
-                    alt={node.data.target.fields.description}
-                    className="contentful-embedded-img"
-                /> */}
-                <Image 
+            <div className="flex w-[full] justify-center">
+                {/* <Image 
                   src={`https://${node.data.target.fields.file.url}`}
                   alt={node.data.target.fields.description}
-                  className="mt-8 max-w-full"
-                />
+                  className="object-cover"
+                  layout="fill"
+                /> */}
             </div>   
         );
     },

@@ -19,7 +19,7 @@ const Header = ({ contentType }) => {
   return (
       <div className="mb-8">
           <div className="flex relative">
-              <h1 className="mr-[10px] text-[2rem] font-jakarta-extrabold text-black">{options[contentType].heading}</h1>
+              <h1 className="mr-[10px] heading-extrabold">{options[contentType].heading}</h1>
                 <Image src="/assets/home-arrow-icon.svg" alt="home arrow icon" width={20} height={28} />
           </div>
           <p className="base-medium-text">{options[contentType].subheading}</p>

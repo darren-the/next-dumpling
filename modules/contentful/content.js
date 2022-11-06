@@ -9,13 +9,11 @@ export const getContent = async (contentType, id) => {
   const content = response.data.map((item) => {
     return {
       ...item,
-      banner: (item.banner) ? item.banner.fields.file.url : null,
-      body: documentToReactComponents(item.body, contentfulOptions),
+      banner: (item.banner) ? `https:${item.banner.fields.file.url}` : null,
     }
   })
 
   const contentSorted = content.sort((a, b) => Date.parse(b.published) - Date.parse(a.published))
-
   return contentSorted
 }
 

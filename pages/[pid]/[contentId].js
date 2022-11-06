@@ -1,9 +1,74 @@
+import Metadata from "../../components/cards/metadata"
+import Tag from "../../components/tag"
 import { getContent, getContentIds } from "../../modules/contentful/content"
+import Image from "next/image"
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { contentfulOptions } from '../../modules/contentful/contentful-options'
+import Button from "../../components/button"
+import Header from '../../components/header'
+import { getRSS } from "../../modules/rss/rss"
+import NoImageCard from "../../components/cards/no-image-card"
 
-const Content = ({ contentJSON }) => {
-  const content = JSON.parse(contentJSON)
+const Content = ({ contentJSON, RSS }) => {
+  var content = JSON.parse(contentJSON)
+  content.body = documentToReactComponents(content.body, contentfulOptions)
+
+  // Create RSS cards
+  const RSSCards = (RSS && RSS.length > 0) ? RSS.slice(0, 4).map((item, index) =>
+    <a href={item.link} key={index} className="max-w-[385px]">
+      <NoImageCard content={item} />
+    </a>
+  ) : null
+
   return (
-    <></>
+    <div className="grid grid-areas-content grid-cols-content">
+      <div className="grid-in-content-outer p-8 flex flex-col justify-center max-w-[865px]">
+        <div className="flex flex-col mb-8 max-w-[700px]">
+
+          <Tag contentType={content.contentType} tag={content.tag} />
+
+          <div className="flex flex-col w-full mb-8 self-center">
+            <h1 className="heading-extrabold mt-[10px]">{content.title}</h1>
+            <p className="base-medium-text mb-[10px]">{content.description}</p>
+            <Metadata author={content.author} published={content.published} />
+          </div>
+
+          {/* <div className="h-[200px] w-[865px]">
+            <Image 
+              src={content.banner}
+              alt="content banner"
+              className="object-cover"
+              layout="fill"
+            />
+          </div> */}
+
+          <div>{content.body}</div>
+        
+        </div>
+
+        <div className="bg-custom-blue p-8 rounded-md flex justify-center">
+          <div className="max-w-[550px] flex flex-col items-center">
+            <h1 className="heading-extrabold text-white text-center">
+              Stay on top of the space, get the hottest degen news in your inbox.
+            </h1>
+            <div className="mt-4 h-[52px] max-w-[265px] w-full">
+              <Button href="https://dumpling.beehiiv.com/"/>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div className="grid-in-content-rec bg-white w-full flex justify-center">
+        <div className="p-5">
+          <Header contentType="rss" />
+          <div className="grid grid-cols-2-auto grid-rows-2-auto gap-x-8">
+            {RSSCards}
+          </div>
+        </div>
+      </div>
+
+    </div>
   )
 }
 
@@ -36,7 +101,9 @@ export const getStaticProps = async ({ params }) => {
       : {}  
   )
 
+  const RSS = await getRSS()
+
   return {
-    props: { contentJSON }
+    props: { contentJSON, RSS }
   }
 }

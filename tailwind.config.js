@@ -23,11 +23,20 @@ module.exports = {
         'home': [
           'news interviews',
           'news rss',
+        ],
+        'content': [
+          'content-outer content-side',
+          'content-rec content-side',
         ]
       },
       gridTemplateColumns: {
-        'preview': 'repeat(2, minmax(auto, 500px))'
-      }
+        'preview': 'repeat(2, minmax(auto, 500px))',
+        'content': 'auto 1fr',
+        '2-auto': 'auto auto'
+      },
+      gridtemplateRows: {
+        '2-auto': 'auto auto',
+      },
     },
   },
   plugins: [
