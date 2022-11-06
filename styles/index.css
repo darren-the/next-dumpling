@@ -73,6 +73,10 @@
     @apply border-r border-border-color border-solid;
   }
 
+  .left-border {
+    @apply border-l border-border-color border-solid;
+  }
+
   .round-button {
     @apply absolute rounded-full h-[calc(100%-6px)] w-[calc(100%-6px)];
   }
@@ -91,5 +95,9 @@
 
   .br {
     @apply bottom-0 right-0;
+  }
+
+  .image-wrapper {
+    @apply relative overflow-hidden border-black border-solid rounded border;
   }
 }

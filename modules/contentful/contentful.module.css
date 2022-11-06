@@ -3,6 +3,5 @@
 }
 
 .contentfulHeading {
-  @apply font-jakarta-medium text-custom-darkgray font-[normal] mt-5;
+  @apply font-jakarta-medium text-custom-darkgray mt-5;
 }
-

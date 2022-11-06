@@ -9,7 +9,7 @@ const Preview = ({ contentJSON }) => {
   const content = JSON.parse(contentJSON)
   const contentCards = (content && content.length > 0) ? content.map((item, index) =>
     <div key={index} className={`${(index % 2 ===0) ? 'pr-4' : 'pl-4'} pt-4`}>
-      <Link href={`/${route}/${item['content-id']}`}>
+      <Link href={`/${route}/${item.contentfulId}`}>
         <a><LargeCard content={item} borderBottom={true} /></a>
       </Link>
     </div>

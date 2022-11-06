@@ -23,7 +23,7 @@ const Content = ({ contentJSON, RSS }) => {
   return (
     <div className="grid grid-areas-content grid-cols-content">
       <div className="grid-in-content-outer p-8 flex flex-col justify-center max-w-[865px]">
-        <div className="flex flex-col mb-8 max-w-[700px]">
+        <div className="flex flex-col mb-8">
 
           <Tag contentType={content.contentType} tag={content.tag} />
 
@@ -33,14 +33,14 @@ const Content = ({ contentJSON, RSS }) => {
             <Metadata author={content.author} published={content.published} />
           </div>
 
-          {/* <div className="h-[200px] w-[865px]">
+          <div className="flex self-center image-wrapper">
             <Image 
-              src={content.banner}
+              src={content.banner.url}
               alt="content banner"
-              className="object-cover"
-              layout="fill"
+              height={content.banner.height}
+              width={content.banner.width}
             />
-          </div> */}
+          </div>
 
           <div>{content.body}</div>
         
@@ -67,6 +67,8 @@ const Content = ({ contentJSON, RSS }) => {
           </div>
         </div>
       </div>
+
+      <div className="grid-in-content-side left-border"></div>
 
     </div>
   )
@@ -95,7 +97,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const content = await getContent(params.pid)
+  const content = await getContent(params.pid, params.contentId)
   const contentJSON = JSON.stringify((content && content.length > 0)
       ? content[0]
       : {}  

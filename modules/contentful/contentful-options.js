@@ -40,19 +40,18 @@ export const contentfulOptions = {
       [BLOCKS.HEADING_4]: (node, children) => <h4 className={`${styles.contentfulHeading} leading-[1.7rem]`}>{children}</h4>,
       [BLOCKS.HEADING_5]: (node, children) => <h5 className={`${styles.contentfulHeading} leading-[1.5rem]`}>{children}</h5>,
       [BLOCKS.HEADING_6]: (node, children) => <h6 className={`${styles.contentfulHeading} leading-[1.35rem]`}>{children}</h6>,
-      [BLOCKS.UL_LIST]: (node, children) => <ul className="ml-5 list-none">{children}</ul>,
+      [BLOCKS.UL_LIST]: (node, children) => <ul className="ml-5 list-disc">{children}</ul>,
       [BLOCKS.LIST_ITEM]: (node, children) => <li className="mt-0 ml-[2.5rem] inline leading-[1.8rem]">{children}</li>,
       [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
-        // const defaultHeight = node.data.target.fields.file.details.image.height
-        // const defaultWidth = node.data.target.fields.file.details.image.width
+        const fields = node.data.target.fields
         return (
-            <div className="flex w-[full] justify-center">
-                {/* <Image 
-                  src={`https://${node.data.target.fields.file.url}`}
-                  alt={node.data.target.fields.description}
-                  className="object-cover"
-                  layout="fill"
-                /> */}
+            <div className="image-wrapper flex w-[full] justify-center">
+                <Image 
+                  src={`https://${fields.file.url}`}
+                  alt={fields.description}
+                  height={fields.file.details.image.height}
+                  width={fields.file.details.image.width}
+                />
             </div>   
         );
     },

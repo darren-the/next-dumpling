@@ -4,12 +4,18 @@ import { contentfulOptions } from './contentful-options'
 
 export const getContent = async (contentType, id) => {
   const url = process.env.baseURL + `/contentful/${contentType}`
-  const response = (id) ? await axios.get(`${url}?=${id}`) : await axios.get(url)
+  const response = (id) ? await axios.get(`${url}?id=${id}`) : await axios.get(url)
 
   const content = response.data.map((item) => {
     return {
       ...item,
-      banner: (item.banner) ? `https:${item.banner.fields.file.url}` : null,
+      banner: (item.banner)
+        ? {
+          url: `https:${item.banner.fields.file.url}`,
+          height: item.banner.fields.file.details.image.height,
+          width: item.banner.fields.file.details.image.width,
+        }
+        : null,
     }
   })
 
