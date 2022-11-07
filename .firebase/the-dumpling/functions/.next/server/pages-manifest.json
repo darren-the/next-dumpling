@@ -1,0 +1,11 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/jobs": "pages/jobs.html",
+  "/[pid]/[contentId]": "pages/[pid]/[contentId].js",
+  "/[pid]": "pages/[pid].js",
+  "/": "pages/index.js",
+  "/memes": "pages/memes.js",
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
+}

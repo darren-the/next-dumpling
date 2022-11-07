@@ -18,7 +18,7 @@ const Preview = ({ contentJSON }) => {
   
 
   return (
-    <div className="p-8 w-full grid grid-cols-preview justify-evenly">
+    <div className="p-8 w-full grid grid-cols-grid-view justify-evenly">
       <Header contentType={route} />
       <div className="w-full h-full"></div>
       {contentCards}
@@ -33,8 +33,6 @@ export const getStaticPaths = () => {
     paths: [
       { params: { pid: 'news' } },
       { params: { pid: 'interviews' } },
-      { params: { pid: 'memes' } },
-      { params: { pid: 'jobs' } },
     ],
     fallback: false,
   }

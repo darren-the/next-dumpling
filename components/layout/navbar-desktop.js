@@ -47,17 +47,17 @@ const NavbarDesktop = () => {
       </div>
 
       <div className="p-6 bottom-border">
-        <a href="/" className="flex flex-row w-[fit-content]">
+        <div className="flex flex-row w-[fit-content]">
           <Image src="/assets/search-icon.svg" alt="search icon" width={14} height={16} />
           <p className="base-bold-text ml-6">Search</p>
-        </a>
+        </div>
       </div>
 
       <div className="p-6 bottom-border">
-        <a href="/" className="flex flex-row w-[fit-content]">
+        <div className="flex flex-row w-[fit-content]">
           <Image src="/assets/about-icon.svg" alt="search icon" width={20} height={20} />
           <p className="base-bold-text ml-4">About</p>
-        </a>
+        </div>
       </div>
 
       <div className="p-6 flex flex-row justify-between items-center">
