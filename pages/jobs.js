@@ -1,6 +1,8 @@
 const Jobs = () => {
   return (
-    <>Placeholder jobs page</>
+    <div className="p-8">
+      <h1 className="heading-extrabold">No jobs currently available</h1>
+    </div>
   )
 }
 
