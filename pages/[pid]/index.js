@@ -8,7 +8,7 @@ const Preview = ({ contentJSON }) => {
   const route = useRouter().asPath.slice(1)
   const content = JSON.parse(contentJSON)
   const contentCards = (content && content.length > 0) ? content.map((item, index) =>
-    <div key={index} className={`${(index % 2 ===0) ? 'pr-4' : 'pl-4'} pt-4`}>
+    <div key={index} className={`${(index % 2 ===0) ? 'xl:pr-4' : 'xl:pl-4'} pt-4`}>
       <Link href={`/${route}/${item.contentfulId}`}>
         <a><LargeCard content={item} borderBottom={true} /></a>
       </Link>
@@ -18,10 +18,12 @@ const Preview = ({ contentJSON }) => {
   
 
   return (
-    <div className="p-8 w-full grid grid-cols-grid-view justify-evenly">
-      <Header contentType={route} />
-      <div className="w-full h-full"></div>
-      {contentCards}
+    <div className="flex flex-col items-center">
+      <div className="p-8 max-w-[500px] xl:max-w-none xl:w-full xl:grid xl:grid-cols-grid-view xl:justify-evenly">
+        <Header contentType={route} />
+        <div className="w-full h-full"></div>
+        {contentCards}
+      </div>
     </div>
   )
 }

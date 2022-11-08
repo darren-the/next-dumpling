@@ -49,20 +49,20 @@ const Index = ({ newsJSON, interviewsJSON, RSS }) => {
       </Head>
       
       <div className="flex justify-center p-8">
-        <div className="w-full grid grid-areas-home justify-evenly">
+        <div className="w-full grid grid-areas-home-mobile justify-items-center xl:grid-areas-home-desktop xl:justify-evenly">
 
-          <div className="grid-in-news flex flex-col max-w-[700px] mr-4">
+          <div className="grid-in-news flex flex-col max-w-[700px] xl:mr-4 mb-8">
             <Header contentType="news" />
             {largeNewsCard}
             {smallNewsCards}
           </div>
 
-          <div className="grid-in-interviews home-desktop-right">
+          <div className="grid-in-interviews flex flex-col max-w-[385px] w-full xl:ml-4 mb-8">
             <Header contentType="interviews" />
             {interviewCards}
           </div>
 
-          <div className='grid-in-rss home-desktop-right'>
+          <div className='grid-in-rss flex flex-col max-w-[385px] w-full xl:ml-4'>
             {RSSCards}
           </div>
           

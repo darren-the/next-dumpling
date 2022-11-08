@@ -20,9 +20,14 @@ module.exports = {
         'border-color': '#d3d3d3',
       },
       gridTemplateAreas: {
-        'home': [
+        'home-desktop': [
           'news interviews',
           'news rss',
+        ],
+        'home-mobile': [
+          'news',
+          'interviews',
+          'rss',
         ],
         'content': [
           'content-outer content-side',

@@ -61,10 +61,6 @@
     @apply ml-[313px] mt-[60px] min-h-[calc(100vh-60px)] w-[1fr] bg-custom-bg-gray overflow-x-hidden;
   }
 
-  .home-desktop-right {
-    @apply flex flex-col max-w-[385px] w-full ml-4;
-  }
-
   .bottom-border {
     @apply border-b border-border-color border-solid;
   }
