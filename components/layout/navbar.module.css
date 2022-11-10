@@ -5,3 +5,11 @@
 .inactive {
   @apply font-jakarta-regular text-zinc-500 my-0 border-custom-lightgray;
 }
+
+.socialBtn {
+  @apply bg-custom-blue h-[30px] md:h-10 w-[97px] md:w-[127px] rounded-full hover:bg-[#85a0d1] flex justify-center items-center;
+}
+
+.socialText {
+  @apply font-jakarta-bold text-white text-sm ml-4 text-[0.65rem] md:text-sm;
+}

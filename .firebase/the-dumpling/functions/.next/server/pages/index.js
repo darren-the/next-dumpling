@@ -218,10 +218,10 @@ const Index = ({ newsJSON , interviewsJSON , RSS  })=>{
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                 className: "flex justify-center p-8",
                 children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                    className: "w-full grid grid-areas-home justify-evenly",
+                    className: "w-full grid grid-areas-home-mobile justify-items-center xl:grid-areas-home-desktop xl:justify-evenly",
                     children: [
                         /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                            className: "grid-in-news flex flex-col max-w-[700px] mr-4",
+                            className: "grid-in-news flex flex-col max-w-[700px] xl:mr-4 mb-8",
                             children: [
                                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_header__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
                                     contentType: "news"
@@ -231,7 +231,7 @@ const Index = ({ newsJSON , interviewsJSON , RSS  })=>{
                             ]
                         }),
                         /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                            className: "grid-in-interviews home-desktop-right",
+                            className: "grid-in-interviews flex flex-col max-w-[385px] w-full xl:ml-4 mb-8",
                             children: [
                                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_header__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
                                     contentType: "interviews"
@@ -240,7 +240,7 @@ const Index = ({ newsJSON , interviewsJSON , RSS  })=>{
                             ]
                         }),
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                            className: "grid-in-rss home-desktop-right",
+                            className: "grid-in-rss flex flex-col max-w-[385px] w-full xl:ml-4",
                             children: RSSCards
                         })
                     ]

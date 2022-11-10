@@ -3,6 +3,8 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import styles from './navbar.module.css'
 import Button from '../button'
+import { useState } from 'react'
+import { useScreenWidth } from '../../modules/utils'
 
 const NavbarDesktop = () => {
   const router = useRouter()
@@ -25,64 +27,103 @@ const NavbarDesktop = () => {
     </Link>
   )
 
-  return (
-    <div className="fixed tl flex flex-col w-[313px] h-screen right-border select-none">
+  const [showNav, setShowNav] = useState(false)
+  const [grayscreenStyle, setGrayscreenStyle] = useState('hidden')
+  const [navPosition, setNavPosition] = useState('left-[-225px]')
+  const toggleNav = () => {
+    if (showNav) {
+      setShowNav(false)
+      setNavPosition('left-[-225px]')
+      setGrayscreenStyle('hidden')
+    } else {
+      setShowNav(true)
+      setNavPosition('left-0')
+      setGrayscreenStyle('inline-block')
+    }
+    console.log(navPosition)
+  }
+
+  const screenWidth = useScreenWidth()
+  const mobileHeader = (screenWidth > 768) ? null : (
+    <div className="h-[50px] w-screen fixed top-0 left-0 centering z-10 bg-white">
+      <button className="bg-none border-none absolute left-6 cursor-pointer" onClick={toggleNav}>
+        <Image src={'/assets/navbar-expand-btn.svg'} alt="expand button" height={18} width={19}/>
+      </button>
       <Link href="/">
-        <a className="bottom-border">
-          <Image
-            src="/assets/logo.svg"
-            alt="The Dumpling logo"
-            width={313}
-            height={114} 
-          />
+        <a className="select-none">
+          <Image src={'/assets/logo-small.svg'} alt="navbar tight logo" height={47} width={151} />
         </a>
-      </Link>
-      
-      <div className="py-8 px-6 flex flex-col">
-        {menu}
-      </div>
-      
-      <div className="px-6 pb-8 bottom-border">
-        <Button href="https://dumpling.beehiiv.com/"/>
-      </div>
-
-      <div className="p-6 bottom-border">
-        <div className="flex flex-row w-[fit-content]">
-          <Image src="/assets/search-icon.svg" alt="search icon" width={14} height={16} />
-          <p className="base-bold-text ml-6">Search</p>
-        </div>
-      </div>
-
-      <div className="p-6 bottom-border">
-        <div className="flex flex-row w-[fit-content]">
-          <Image src="/assets/about-icon.svg" alt="search icon" width={20} height={20} />
-          <p className="base-bold-text ml-4">About</p>
-        </div>
-      </div>
-
-      <div className="p-6 flex flex-row justify-between items-center">
-        <a 
-          href="https://discord.com/invite/fortunefriendsclub" 
-          className="bg-custom-blue centering h-10 w-[127px] rounded-full hover:bg-[#85a0d1]"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <Image src="/assets/discord-icon.svg" alt="discord icon" width={20} height={14}/>
-          <p className="font-jakarta-bold text-white text-sm ml-4">Discuss</p>
-        </a>
-
-        <a 
-          href="https://twitter.com/FortuneFriends_" 
-          className="bg-custom-blue centering h-10 w-[127px] rounded-full hover:bg-[#85a0d1]"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <Image src="/assets/twitter-icon.svg" alt="discord icon" width={18} height={14}/>
-          <p className="font-jakarta-bold text-white text-sm ml-4">Follow</p>
-        </a>
-      </div>
-
+      </Link>     
     </div>
+  )
+
+  return (
+    <div>
+      {mobileHeader}
+      <button
+        className={`fixed top-0 left-0 h-screen w-screen bg-custom-darkgray opacity-50 select-none z-20 ${grayscreenStyle}`}
+        onClick={toggleNav}
+      />
+      <div className={`bg-white fixed tl flex flex-col w-[225px] md:w-[313px] h-screen right-border
+            select-none md:left-0 z-30 prim-trans ${navPosition}`}>
+        <Link href="/">
+          <a className="bottom-border">
+            <Image
+              src="/assets/logo.svg"
+              alt="The Dumpling logo"
+              width={313}
+              height={114} 
+            />
+          </a>
+        </Link>
+        
+        <div className="py-8 px-6 flex flex-col">
+          {menu}
+        </div>
+        
+        <div className="h-[72px] md:h-[84px] px-6 pb-8 bottom-border">
+          <Button href="https://dumpling.beehiiv.com/"/>
+        </div>
+
+        <div className="p-6 bottom-border">
+          <div className="flex flex-row w-[fit-content]">
+            <Image src="/assets/search-icon.svg" alt="search icon" width={14} height={16} />
+            <p className="base-bold-text ml-6">Search</p>
+          </div>
+        </div>
+
+        <div className="p-6 bottom-border">
+          <div className="flex flex-row w-[fit-content]">
+            <Image src="/assets/about-icon.svg" alt="search icon" width={20} height={20} />
+            <p className="base-bold-text ml-4">About</p>
+          </div>
+        </div>
+
+        <div className="px-[18px] py-[12px] md:p-6 flex flex-row justify-between items-center gap-x-[8.5px]">
+          <a 
+            href="https://discord.com/invite/fortunefriendsclub" 
+            className={styles.socialBtn}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Image src="/assets/discord-icon.svg" alt="discord icon" width={20} height={14}/>
+            <p className={styles.socialText}>Discuss</p>
+          </a>
+
+          <a 
+            href="https://twitter.com/FortuneFriends_" 
+            className={styles.socialBtn}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Image src="/assets/twitter-icon.svg" alt="discord icon" width={18} height={14}/>
+            <p className={styles.socialText}>Follow</p>
+          </a>
+        </div>
+
+      </div>
+    </div>
+    
   )
 }
 

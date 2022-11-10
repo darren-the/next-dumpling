@@ -10,7 +10,9 @@ exports.modules = {
 // Exports
 module.exports = {
 	"active": "navbar_active__aUwE_",
-	"inactive": "navbar_inactive__4qKRM"
+	"inactive": "navbar_inactive__4qKRM",
+	"socialBtn": "navbar_socialBtn__q_GoS",
+	"socialText": "navbar_socialText__oKQDC"
 };
 
 
@@ -30,9 +32,9 @@ const Button = ({ href  })=>{
     return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
         href: href,
         target: "_blank",
-        rel: "noreferrer",
+        rel: "noreferrer h-full",
         children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-            className: "h-[52px] relative",
+            className: "h-full relative",
             children: [
                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                     className: "round-button br border-[3px] border-solid border-black"
@@ -53,7 +55,7 @@ const Button = ({ href  })=>{
 
 /***/ }),
 
-/***/ 9634:
+/***/ 2460:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -80,7 +82,31 @@ var navbar_module = __webpack_require__(9905);
 var navbar_module_default = /*#__PURE__*/__webpack_require__.n(navbar_module);
 // EXTERNAL MODULE: ./components/button.js
 var components_button = __webpack_require__(2442);
+// EXTERNAL MODULE: external "react"
+var external_react_ = __webpack_require__(6689);
+;// CONCATENATED MODULE: ./modules/utils.js
+
+const useScreenWidth = ()=>{
+    // handle window resizing
+    const { 0: windowSize , 1: setWindowSize  } = (0,external_react_.useState)("768px");
+    (0,external_react_.useEffect)(()=>{
+        const handleWindowResize = ()=>{
+            setWindowSize(window.innerWidth);
+        };
+        window.addEventListener("resize", handleWindowResize);
+        console.log(windowSize);
+        return ()=>{
+            window.removeEventListener("resize", handleWindowResize);
+        };
+    }, [
+        windowSize
+    ]);
+    return windowSize;
+};
+
 ;// CONCATENATED MODULE: ./components/layout/navbar-desktop.js
+
+
 
 
 
@@ -109,103 +135,156 @@ const NavbarDesktop = ()=>{
                 children: menuNames[id]
             })
         }, id));
-    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-        className: "fixed tl flex flex-col w-[313px] h-screen right-border select-none",
+    const { 0: showNav , 1: setShowNav  } = (0,external_react_.useState)(false);
+    const { 0: grayscreenStyle , 1: setGrayscreenStyle  } = (0,external_react_.useState)("hidden");
+    const { 0: navPosition , 1: setNavPosition  } = (0,external_react_.useState)("left-[-225px]");
+    const toggleNav = ()=>{
+        if (showNav) {
+            setShowNav(false);
+            setNavPosition("left-[-225px]");
+            setGrayscreenStyle("hidden");
+        } else {
+            setShowNav(true);
+            setNavPosition("left-0");
+            setGrayscreenStyle("inline-block");
+        }
+        console.log(navPosition);
+    };
+    const screenWidth = useScreenWidth();
+    const mobileHeader = screenWidth > 768 ? null : /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+        className: "h-[50px] w-screen fixed top-0 left-0 centering z-10 bg-white",
         children: [
+            /*#__PURE__*/ jsx_runtime_.jsx("button", {
+                className: "bg-none border-none absolute left-6 cursor-pointer",
+                onClick: toggleNav,
+                children: /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
+                    src: "/assets/navbar-expand-btn.svg",
+                    alt: "expand button",
+                    height: 18,
+                    width: 19
+                })
+            }),
             /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
                 href: "/",
                 children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
-                    className: "bottom-border",
+                    className: "select-none",
                     children: /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
-                        src: "/assets/logo.svg",
-                        alt: "The Dumpling logo",
-                        width: 313,
-                        height: 114
+                        src: "/assets/logo-small.svg",
+                        alt: "navbar tight logo",
+                        height: 47,
+                        width: 151
                     })
                 })
-            }),
-            /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                className: "py-8 px-6 flex flex-col",
-                children: menu
-            }),
-            /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                className: "px-6 pb-8 bottom-border",
-                children: /*#__PURE__*/ jsx_runtime_.jsx(components_button/* default */.Z, {
-                    href: "https://dumpling.beehiiv.com/"
-                })
-            }),
-            /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                className: "p-6 bottom-border",
-                children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                    className: "flex flex-row w-[fit-content]",
-                    children: [
-                        /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
-                            src: "/assets/search-icon.svg",
-                            alt: "search icon",
-                            width: 14,
-                            height: 16
-                        }),
-                        /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                            className: "base-bold-text ml-6",
-                            children: "Search"
-                        })
-                    ]
-                })
-            }),
-            /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                className: "p-6 bottom-border",
-                children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                    className: "flex flex-row w-[fit-content]",
-                    children: [
-                        /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
-                            src: "/assets/about-icon.svg",
-                            alt: "search icon",
-                            width: 20,
-                            height: 20
-                        }),
-                        /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                            className: "base-bold-text ml-4",
-                            children: "About"
-                        })
-                    ]
-                })
+            })
+        ]
+    });
+    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+        children: [
+            mobileHeader,
+            /*#__PURE__*/ jsx_runtime_.jsx("button", {
+                className: `fixed top-0 left-0 h-screen w-screen bg-custom-darkgray opacity-50 select-none z-20 ${grayscreenStyle}`,
+                onClick: toggleNav
             }),
             /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                className: "p-6 flex flex-row justify-between items-center",
+                className: `bg-white fixed tl flex flex-col w-[225px] md:w-[313px] h-screen right-border
+            select-none md:left-0 z-30 prim-trans ${navPosition}`,
                 children: [
-                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("a", {
-                        href: "https://discord.com/invite/fortunefriendsclub",
-                        className: "bg-custom-blue centering h-10 w-[127px] rounded-full hover:bg-[#85a0d1]",
-                        target: "_blank",
-                        rel: "noreferrer",
-                        children: [
-                            /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
-                                src: "/assets/discord-icon.svg",
-                                alt: "discord icon",
-                                width: 20,
-                                height: 14
-                            }),
-                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                className: "font-jakarta-bold text-white text-sm ml-4",
-                                children: "Discuss"
+                    /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                        href: "/",
+                        children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
+                            className: "bottom-border",
+                            children: /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
+                                src: "/assets/logo.svg",
+                                alt: "The Dumpling logo",
+                                width: 313,
+                                height: 114
                             })
-                        ]
+                        })
                     }),
-                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("a", {
-                        href: "https://twitter.com/FortuneFriends_",
-                        className: "bg-custom-blue centering h-10 w-[127px] rounded-full hover:bg-[#85a0d1]",
-                        target: "_blank",
-                        rel: "noreferrer",
+                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                        className: "py-8 px-6 flex flex-col",
+                        children: menu
+                    }),
+                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                        className: "h-[72px] md:h-[84px] px-6 pb-8 bottom-border",
+                        children: /*#__PURE__*/ jsx_runtime_.jsx(components_button/* default */.Z, {
+                            href: "https://dumpling.beehiiv.com/"
+                        })
+                    }),
+                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                        className: "p-6 bottom-border",
+                        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                            className: "flex flex-row w-[fit-content]",
+                            children: [
+                                /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
+                                    src: "/assets/search-icon.svg",
+                                    alt: "search icon",
+                                    width: 14,
+                                    height: 16
+                                }),
+                                /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                    className: "base-bold-text ml-6",
+                                    children: "Search"
+                                })
+                            ]
+                        })
+                    }),
+                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                        className: "p-6 bottom-border",
+                        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                            className: "flex flex-row w-[fit-content]",
+                            children: [
+                                /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
+                                    src: "/assets/about-icon.svg",
+                                    alt: "search icon",
+                                    width: 20,
+                                    height: 20
+                                }),
+                                /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                    className: "base-bold-text ml-4",
+                                    children: "About"
+                                })
+                            ]
+                        })
+                    }),
+                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                        className: "px-[18px] py-[12px] md:p-6 flex flex-row justify-between items-center gap-x-[8.5px]",
                         children: [
-                            /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
-                                src: "/assets/twitter-icon.svg",
-                                alt: "discord icon",
-                                width: 18,
-                                height: 14
+                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("a", {
+                                href: "https://discord.com/invite/fortunefriendsclub",
+                                className: (navbar_module_default()).socialBtn,
+                                target: "_blank",
+                                rel: "noreferrer",
+                                children: [
+                                    /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
+                                        src: "/assets/discord-icon.svg",
+                                        alt: "discord icon",
+                                        width: 20,
+                                        height: 14
+                                    }),
+                                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                        className: (navbar_module_default()).socialText,
+                                        children: "Discuss"
+                                    })
+                                ]
                             }),
-                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                className: "font-jakarta-bold text-white text-sm ml-4",
-                                children: "Follow"
+                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("a", {
+                                href: "https://twitter.com/FortuneFriends_",
+                                className: (navbar_module_default()).socialBtn,
+                                target: "_blank",
+                                rel: "noreferrer",
+                                children: [
+                                    /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
+                                        src: "/assets/twitter-icon.svg",
+                                        alt: "discord icon",
+                                        width: 18,
+                                        height: 14
+                                    }),
+                                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                        className: (navbar_module_default()).socialText,
+                                        children: "Follow"
+                                    })
+                                ]
                             })
                         ]
                     })
@@ -527,7 +606,7 @@ module.exports = require("react/jsx-runtime");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [675,676,664], () => (__webpack_exec__(9634)));
+var __webpack_exports__ = __webpack_require__.X(0, [675,676,664], () => (__webpack_exec__(2460)));
 module.exports = __webpack_exports__;
 
 })();

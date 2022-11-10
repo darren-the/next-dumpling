@@ -36,7 +36,7 @@ const Preview = ({ contentJSON  })=>{
     const route = (0,next_router__WEBPACK_IMPORTED_MODULE_2__.useRouter)().asPath.slice(1);
     const content = JSON.parse(contentJSON);
     const contentCards = content && content.length > 0 ? content.map((item, index)=>/*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-            className: `${index % 2 === 0 ? "pr-4" : "pl-4"} pt-4`,
+            className: `${index % 2 === 0 ? "xl:pr-4" : "xl:pl-4"} pt-4`,
             children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
                 href: `/${route}/${item.contentfulId}`,
                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
@@ -47,17 +47,20 @@ const Preview = ({ contentJSON  })=>{
                 })
             })
         }, index)) : null;
-    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-        className: "p-8 w-full grid grid-cols-grid-view justify-evenly",
-        children: [
-            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_header__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
-                contentType: route
-            }),
-            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                className: "w-full h-full"
-            }),
-            contentCards
-        ]
+    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+        className: "flex flex-col items-center",
+        children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "p-8 max-w-[500px] xl:max-w-none xl:w-full xl:grid xl:grid-cols-grid-view xl:justify-evenly",
+            children: [
+                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_header__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
+                    contentType: route
+                }),
+                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                    className: "w-full h-full"
+                }),
+                contentCards
+            ]
+        })
     });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Preview);

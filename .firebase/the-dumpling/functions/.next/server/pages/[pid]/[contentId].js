@@ -18,9 +18,9 @@ const Button = ({ href  })=>{
     return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
         href: href,
         target: "_blank",
-        rel: "noreferrer",
+        rel: "noreferrer h-full",
         children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-            className: "h-[52px] relative",
+            className: "h-full relative",
             children: [
                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                     className: "round-button br border-[3px] border-solid border-black"
