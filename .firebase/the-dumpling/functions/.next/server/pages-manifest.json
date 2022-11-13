@@ -2,10 +2,10 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/jobs": "pages/jobs.html",
-  "/": "pages/index.js",
-  "/[pid]": "pages/[pid].js",
   "/[pid]/[contentId]": "pages/[pid]/[contentId].js",
+  "/[pid]": "pages/[pid].js",
   "/_document": "pages/_document.js",
   "/memes": "pages/memes.js",
+  "/": "pages/index.js",
   "/404": "pages/404.html"
 }

@@ -55,16 +55,50 @@ const Button = ({ href  })=>{
 
 /***/ }),
 
-/***/ 2460:
+/***/ 1771:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _navbar_desktop__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5758);
+/* harmony import */ var _tickers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(520);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_tickers__WEBPACK_IMPORTED_MODULE_2__]);
+_tickers__WEBPACK_IMPORTED_MODULE_2__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+
+
+
+const Layout = ({ children  })=>{
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        children: [
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_tickers__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {}),
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_navbar_desktop__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {}),
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                className: "main-content",
+                children: children
+            })
+        ]
+    });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Layout);
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 5758:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "default": () => (/* binding */ _app)
+  "Z": () => (/* binding */ navbar_desktop)
 });
 
 // EXTERNAL MODULE: external "react/jsx-runtime"
@@ -88,8 +122,9 @@ var external_react_ = __webpack_require__(6689);
 
 const useScreenWidth = ()=>{
     // handle window resizing
-    const { 0: windowSize , 1: setWindowSize  } = (0,external_react_.useState)("768px");
-    (0,external_react_.useEffect)(()=>{
+    const defaultWidth =  false ? 0 : "768px";
+    const { 0: windowSize , 1: setWindowSize  } = useState(defaultWidth);
+    useEffect(()=>{
         const handleWindowResize = ()=>{
             setWindowSize(window.innerWidth);
         };
@@ -150,12 +185,11 @@ const NavbarDesktop = ()=>{
         }
         console.log(navPosition);
     };
-    const screenWidth = useScreenWidth();
-    const mobileHeader = screenWidth > 768 ? null : /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-        className: "h-[50px] w-screen fixed top-0 left-0 centering z-10 bg-white",
+    const mobileHeader = /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+        className: "h-[56px] w-screen fixed top-0 left-0 centering z-10 bg-white md:hidden",
         children: [
             /*#__PURE__*/ jsx_runtime_.jsx("button", {
-                className: "bg-none border-none absolute left-6 cursor-pointer",
+                className: "bg-none border-none absolute left-6 cursor-pointer centering",
                 onClick: toggleNav,
                 children: /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
                     src: "/assets/navbar-expand-btn.svg",
@@ -167,7 +201,7 @@ const NavbarDesktop = ()=>{
             /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
                 href: "/",
                 children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
-                    className: "select-none",
+                    className: "select-none centering",
                     children: /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
                         src: "/assets/logo-small.svg",
                         alt: "navbar tight logo",
@@ -295,67 +329,154 @@ const NavbarDesktop = ()=>{
 };
 /* harmony default export */ const navbar_desktop = (NavbarDesktop);
 
-;// CONCATENATED MODULE: ./components/layout/tickers.js
 
-const Tickers = ()=>{
-    // const tickers = Object.keys(tickerData).map((key, index) => {
-    //   const ticker = res.data[key]
-    //   const priceChange = ticker.quote.USD.percent_change_24h
-    //   const priceChangeStr = ((priceChange >= 0) ? "+" : "") + priceChange.toFixed(2) + "%"
-    //   return (
-    //     <div>
-    //       <div>
-    //         <Image 
-    //           src={`/assets/tickers-square${index}.svg`}
-    //           alt={`ticker icon ${index}`}
-    //           width={40}
-    //           height={40}
-    //         />
-    //         <div>
-    //           <div>
-    //             <p>{ticker.name}</p>
-    //             <p>{'$' + parseFloat(ticker.quote.USD.price.toFixed(2)).toLocaleString()}</p>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   )
-    // })
-    return /*#__PURE__*/ jsx_runtime_.jsx("div", {});
-};
-/* harmony default export */ const tickers = (Tickers);
+/***/ }),
 
-;// CONCATENATED MODULE: ./components/layout/layout.js
+/***/ 520:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _modules_tickers_tickers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5405);
+/* harmony import */ var next_image__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5675);
+/* harmony import */ var next_image__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_image__WEBPACK_IMPORTED_MODULE_3__);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_modules_tickers_tickers__WEBPACK_IMPORTED_MODULE_2__]);
+_modules_tickers_tickers__WEBPACK_IMPORTED_MODULE_2__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+
 
 
 
-const Layout = ({ children  })=>{
-    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-        children: [
-            /*#__PURE__*/ jsx_runtime_.jsx(tickers, {}),
-            /*#__PURE__*/ jsx_runtime_.jsx(navbar_desktop, {}),
-            /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                className: "main-content",
-                children: children
-            })
-        ]
+const Tickers = ()=>{
+    const { 0: tickers , 1: setTickers  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)();
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
+        (0,_modules_tickers_tickers__WEBPACK_IMPORTED_MODULE_2__/* .getTickers */ .c)().then((data)=>{
+            const tickerComponents = Object.keys(data).map((key, index)=>{
+                const ticker = data[key];
+                const priceChange = ticker.quote.USD.percent_change_24h;
+                const priceChangeStr = (priceChange >= 0 ? "+" : "") + priceChange.toFixed(2) + "%";
+                return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                    className: "px-8 centering bottom-border right-border top-border min-w-[275px] md:border-t-0",
+                    children: [
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                            className: "w-10 h-10",
+                            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_3___default()), {
+                                src: `/assets/tickers-square${index}.svg`,
+                                alt: `ticker icon ${index}`,
+                                width: 40,
+                                height: 40,
+                                layout: "fixed"
+                            })
+                        }),
+                        /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                            className: "ml-3 flex flex-col justify-evenly w-full font-jakarta-bold",
+                            children: [
+                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                                    className: "min-w-[133px] w-full flex justify-between",
+                                    children: [
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                                            className: "text-base leading-4",
+                                            children: ticker.name
+                                        }),
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                                            className: "ml-3",
+                                            children: "$" + parseFloat(ticker.quote.USD.price.toFixed(2)).toLocaleString()
+                                        })
+                                    ]
+                                }),
+                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                                    className: "min-w-[133px] w-full flex justify-between",
+                                    children: [
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                                            className: "text-sm leading-[0.875rem] text-custom-darkgray",
+                                            children: ticker.symbol + " (24h)"
+                                        }),
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                                            className: "text-sm leading-[0.875rem]",
+                                            style: {
+                                                color: priceChange >= 0 ? "#70D186" : "red"
+                                            },
+                                            children: priceChangeStr
+                                        })
+                                    ]
+                                })
+                            ]
+                        })
+                    ]
+                }, index);
+            });
+            setTickers(tickerComponents);
+        });
+    }, []);
+    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+        className: "z-10 h-[60px] md:ml-[313px] w-full md:w-[calc(100vw-313px)] grid grid-cols-3-1fr bg-white fixed top-[56px] md:top-0 overflow-y-scroll",
+        children: tickers
     });
 };
-/* harmony default export */ const layout = (Layout);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Tickers);
 
-;// CONCATENATED MODULE: ./pages/_app.js
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 5405:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "c": () => (/* binding */ getTickers)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9648);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([axios__WEBPACK_IMPORTED_MODULE_0__]);
+axios__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+
+const getTickers = async ()=>{
+    const url = "https://us-central1-news-api-37579.cloudfunctions.net/app" + "/coinmarketcap";
+    const response = await axios__WEBPACK_IMPORTED_MODULE_0__["default"].get(url);
+    return response.data;
+};
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 8510:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_layout_layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1771);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_components_layout_layout__WEBPACK_IMPORTED_MODULE_1__]);
+_components_layout_layout__WEBPACK_IMPORTED_MODULE_1__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
 
 
 
 const MyApp = ({ Component , pageProps  })=>{
-    return /*#__PURE__*/ jsx_runtime_.jsx(layout, {
-        children: /*#__PURE__*/ jsx_runtime_.jsx(Component, {
+    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_layout_layout__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
+        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Component, {
             ...pageProps
         })
     });
 };
-/* harmony default export */ const _app = (MyApp);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyApp);
 
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
 
 /***/ }),
 
@@ -597,6 +718,14 @@ module.exports = require("react");
 "use strict";
 module.exports = require("react/jsx-runtime");
 
+/***/ }),
+
+/***/ 9648:
+/***/ ((module) => {
+
+"use strict";
+module.exports = import("axios");;
+
 /***/ })
 
 };
@@ -606,7 +735,7 @@ module.exports = require("react/jsx-runtime");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [675,676,664], () => (__webpack_exec__(2460)));
+var __webpack_exports__ = __webpack_require__.X(0, [675,676,664], () => (__webpack_exec__(8510)));
 module.exports = __webpack_exports__;
 
 })();

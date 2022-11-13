@@ -43,14 +43,13 @@ const NavbarDesktop = () => {
     console.log(navPosition)
   }
 
-  const screenWidth = useScreenWidth()
-  const mobileHeader = (screenWidth > 768) ? null : (
-    <div className="h-[50px] w-screen fixed top-0 left-0 centering z-10 bg-white">
-      <button className="bg-none border-none absolute left-6 cursor-pointer" onClick={toggleNav}>
+  const mobileHeader = (
+    <div className="h-[56px] w-screen fixed top-0 left-0 centering z-10 bg-white md:hidden">
+      <button className="bg-none border-none absolute left-6 cursor-pointer centering" onClick={toggleNav}>
         <Image src={'/assets/navbar-expand-btn.svg'} alt="expand button" height={18} width={19}/>
       </button>
       <Link href="/">
-        <a className="select-none">
+        <a className="select-none centering">
           <Image src={'/assets/logo-small.svg'} alt="navbar tight logo" height={47} width={151} />
         </a>
       </Link>     
