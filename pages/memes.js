@@ -42,6 +42,7 @@ export const getStaticProps = async () => {
   const tweetsJSON = JSON.stringify(tweets)
 
   return {
-    props: { tweetsJSON }
+    props: { tweetsJSON },
+    revalidate: 60,
   }
 }

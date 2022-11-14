@@ -48,6 +48,7 @@ export const getStaticProps = async ({ params }) => {
   }
 
   return {
-    props: { contentJSON }
+    props: { contentJSON },
+    revalidate: 60,
   }
 }

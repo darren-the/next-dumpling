@@ -106,6 +106,7 @@ export const getStaticProps = async ({ params }) => {
   const RSS = await getRSS()
 
   return {
-    props: { contentJSON, RSS }
+    props: { contentJSON, RSS },
+    revalidate: 60,
   }
 }

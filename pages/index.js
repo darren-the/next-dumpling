@@ -85,6 +85,7 @@ export const getStaticProps = async () => {
 
   return {
     props: { newsJSON, interviewsJSON, RSS },
+    revalidate: 60,
   }
 }
 
