@@ -58,7 +58,7 @@
 
 @layer components {
   .main-content {
-    @apply md:ml-[313px] mt-[116px] md:mt-[60px] min-h-[calc(100vh-60px)] w-[1fr] bg-custom-bg-gray overflow-x-hidden;
+    @apply md:ml-[313px] mt-[116px] md:mt-[60px] min-h-[calc(100vh-60px)] w-[1fr] bg-custom-bg-gray overflow-hidden;
   }
 
   .top-border {

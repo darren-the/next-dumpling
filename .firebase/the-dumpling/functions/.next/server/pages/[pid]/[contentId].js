@@ -129,6 +129,7 @@ const Content = ({ contentJSON , RSS  })=>{
                                 })
                             }),
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                                className: "flex flex-col",
                                 children: content.body
                             })
                         ]
@@ -162,7 +163,7 @@ const Content = ({ contentJSON , RSS  })=>{
                             contentType: "rss"
                         }),
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                            className: "grid grid-cols-2-auto grid-rows-2-auto gap-x-8",
+                            className: "flex flex-col md:grid md:grid-cols-2-auto md:grid-rows-2-auto md:gap-x-8",
                             children: RSSCards
                         })
                     ]

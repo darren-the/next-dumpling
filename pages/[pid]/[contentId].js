@@ -42,7 +42,7 @@ const Content = ({ contentJSON, RSS }) => {
             />
           </div>
 
-          <div>{content.body}</div>
+          <div className="flex flex-col">{content.body}</div>
         
         </div>
 
@@ -62,7 +62,7 @@ const Content = ({ contentJSON, RSS }) => {
       <div className="grid-in-content-rec bg-white w-full flex justify-center">
         <div className="p-5">
           <Header contentType="rss" />
-          <div className="grid grid-cols-2-auto grid-rows-2-auto gap-x-8">
+          <div className="flex flex-col md:grid md:grid-cols-2-auto md:grid-rows-2-auto md:gap-x-8">
             {RSSCards}
           </div>
         </div>

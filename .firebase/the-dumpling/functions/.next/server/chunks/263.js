@@ -25,7 +25,7 @@ const NoImageCard = ({ borderBottom , content  })=>{
             className: "flex flex-col justify-center basis-60 grow",
             children: [
                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_tag__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
-                    className: "h-4",
+                    className: "min-h-4",
                     contentType: content.contentType,
                     tag: content.tag
                 }),

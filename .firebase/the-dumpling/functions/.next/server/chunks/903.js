@@ -300,7 +300,7 @@ const contentfulOptions = {
         [_contentful_rich_text_types__WEBPACK_IMPORTED_MODULE_1__.BLOCKS.EMBEDDED_ASSET]: (node, children)=>{
             const fields = node.data.target.fields;
             return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                className: "image-wrapper flex w-[full] justify-center",
+                className: "flex w-fit self-center",
                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_3___default()), {
                     src: `https://${fields.file.url}`,
                     alt: fields.description,

@@ -45,7 +45,7 @@ export const contentfulOptions = {
       [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
         const fields = node.data.target.fields
         return (
-            <div className="image-wrapper flex w-[full] justify-center">
+            <div className="flex w-fit self-center">
                 <Image 
                   src={`https://${fields.file.url}`}
                   alt={fields.description}
