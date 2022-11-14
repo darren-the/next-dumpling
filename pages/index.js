@@ -29,7 +29,7 @@ const Index = ({ newsJSON, interviewsJSON, RSS }) => {
   // Create interview cards
   const interviewCards = (interviews && interviews.length > 0) ? interviews.slice(0, process.env.homeInterviewLimit).map((item, index) =>
     <Link href={`/interviews/${item['contentfulId']}`} key={index}>
-      <a><MediumCard content={news[0]} borderBottom={true} /></a>
+      <a><MediumCard content={item} borderBottom={true} /></a>
     </Link>
   ) : null
   
