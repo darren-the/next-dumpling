@@ -13,13 +13,14 @@ const Tickers = () => {
   if (isLoading || error) return (
     <></>
   )
-
-  const tickers = Object.keys(data).map((key, index) => {
+  const dataArr = Object.keys(data)
+  const tickers = dataArr.map((key, index) => {
     const ticker = data[key]
     const priceChange = ticker.quote.USD.percent_change_24h
     const priceChangeStr = ((priceChange >= 0) ? "+" : "") + priceChange.toFixed(2) + "%"
+    const tickerStyle = `px-8 centering top-border min-w-[275px] md:border-t-0 ${(index < dataArr.length - 1) ? 'right-border' : ''}`
     return (
-      <div className="px-8 centering bottom-border right-border top-border min-w-[275px] md:border-t-0" key={index}>
+      <div className={tickerStyle} key={index}>
         <div className="w-10 h-10">
           <Image 
             src={`/assets/tickers-square${index}.svg`}
@@ -47,8 +48,11 @@ const Tickers = () => {
   })
   return (
     <div className="z-10 h-[60px] md:ml-[313px] w-full md:w-[calc(100vw-313px)]
-      grid grid-cols-3-1fr bg-white fixed top-[56px] md:top-0 overflow-y-scroll">
-      {tickers}
+       bg-white fixed top-[56px] md:top-0 bottom-border">
+        <div className="h-full grid grid-cols-3-1fr max-w-[calc(1920px-313px)] overflow-x-scroll md:overflow-x-clip">
+          {tickers}   
+        </div>
+
     </div>
   )
 }
