@@ -35,7 +35,7 @@ module.exports = {
         ]
       },
       gridTemplateColumns: {
-        'grid-view': 'repeat(2, minmax(auto, 500px))',
+        'grid-view': 'repeat(2, minmax(0, 500px))',
         'content': 'auto 1fr',
         '2-auto': 'auto auto',
         '3-1fr': 'repeat(3, 1fr)',

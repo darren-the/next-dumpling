@@ -8,6 +8,7 @@ import Button from "../../components/button"
 import Header from '../../components/header'
 import { getRSS } from "../../modules/rss/rss"
 import NoImageCard from "../../components/cards/no-image-card"
+import { NextSeo } from 'next-seo'
 
 const Content = ({ contentJSON, RSS }) => {
   var content = JSON.parse(contentJSON)
@@ -22,6 +23,9 @@ const Content = ({ contentJSON, RSS }) => {
 
   return (
     <div className="grid grid-areas-content grid-cols-content">
+      <NextSeo
+        title={content.title + " - The Dumpling"}
+      />
       <div className="grid-in-content-outer p-8 flex flex-col justify-center max-w-[865px]">
         <div className="flex flex-col mb-8">
 

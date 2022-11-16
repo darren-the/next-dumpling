@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import styles from './navbar.module.css'
 import Button from '../button'
 import { useState } from 'react'
-import { useScreenWidth } from '../../modules/utils'
 
 const NavbarDesktop = () => {
   const router = useRouter()
