@@ -23,8 +23,8 @@ const Tickers = () => {
       <div className={tickerStyle} key={index}>
         <div className="w-10 h-10">
           <Image 
-            src={`/assets/tickers-square${index}.svg`}
-            alt={`ticker icon ${index}`}
+            src={`/assets/${ticker.name.toLowerCase()}.png`}
+            alt={`${ticker.name} icon`}
             width={40}
             height={40}
             layout="fixed"

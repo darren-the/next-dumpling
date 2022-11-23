@@ -39,6 +39,7 @@ module.exports = {
         'content': 'auto 1fr',
         '2-auto': 'auto auto',
         '3-1fr': 'repeat(3, 1fr)',
+        'home-desktop': '65% 35%',
       },
       gridtemplateRows: {
         '2-auto': 'auto auto',
