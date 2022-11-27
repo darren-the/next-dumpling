@@ -47,7 +47,7 @@ export const contentfulOptions = {
         return (
             <div className="flex w-fit self-center">
                 <Image 
-                  src={`https://${fields.file.url}`}
+                  src={`https:${fields.file.url}`}
                   alt={fields.description}
                   height={fields.file.details.image.height}
                   width={fields.file.details.image.width}
