@@ -59,5 +59,5 @@ export const contentfulOptions = {
     <a href={data.uri} className="font-jakarta-bold inline decoration-solid decoration-1 decoration-custom-blue text-custom-blue">
         {children}
     </a>
-}
+  }
 }

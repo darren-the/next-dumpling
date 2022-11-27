@@ -25,6 +25,19 @@ const Content = ({ contentJSON, RSS }) => {
     <div className="grid grid-areas-content grid-cols-content">
       <NextSeo
         title={content.title + " - The Dumpling"}
+        description={content.description}
+        openGraph={{
+          title: content.title + ' - The Dumpling',
+          description: content.description,
+          images: [
+            {
+              url: content.banner.url,
+              width: content.banner.width,
+              height: content.banner.height,
+              alt: 'Content banner',
+            }
+          ]
+        }}
       />
       <div className="grid-in-content-outer p-8 flex flex-col justify-center max-w-[865px]">
         <div className="flex flex-col mb-8">

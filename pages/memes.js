@@ -31,6 +31,7 @@ const Memes = ({ tweetsJSON }) => {
     <div className="flex flex-col p-8">
       <NextSeo
         title="Memes - The Dumpling"
+        description="placeholder memes description"
       />
       {/* desktop view */}
       <div className="hidden min-[1000px]:grid grid-cols-grid-view w-full justify-evenly">
