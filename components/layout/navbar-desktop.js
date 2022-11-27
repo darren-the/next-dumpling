@@ -80,7 +80,9 @@ const NavbarDesktop = () => {
         </div>
         
         <div className="h-[72px] md:h-[84px] px-6 pb-8 bottom-border">
-          <Button href="https://dumpling.beehiiv.com/"/>
+          <div className="h-[52px]">
+            <Button href="https://dumpling.beehiiv.com/"/>
+          </div>
         </div>
 
         <div className="p-6 bottom-border">
