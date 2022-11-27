@@ -34,11 +34,11 @@ const Index = ({ newsJSON, interviewsJSON, RSS }) => {
   ) : null
   
   // Create RSS cards
-  // const RSSCards = (RSS && RSS.length > 0) ? RSS.slice(0, process.env.homeRSSLimit).map((item, index) =>
-  //   <a href={item.link} key={index}>
-  //     <NoImageCard content={item} />
-  //   </a>
-  // ) : null
+  const RSSCards = (RSS && RSS.length > 0) ? RSS.slice(0, process.env.homeRSSLimit).map((item, index) =>
+    <a href={item.link} key={index}>
+      <NoImageCard content={item} />
+    </a>
+  ) : null
 
   return (
     <div>
@@ -74,7 +74,7 @@ const Index = ({ newsJSON, interviewsJSON, RSS }) => {
 
           <div className="grid-in-rss flex flex-col w-full xl:w-[95%] xl:ml-4 max-w-[485px]"> {/* max-w-[485px] */}
             <Header contentType="rss" />
-            {/* {RSSCards} */}
+            {RSSCards}
           </div>
           
         </div>
@@ -98,8 +98,7 @@ export const getStaticProps = async () => {
   const interviewsJSON = JSON.stringify(interviews)
 
   //fetch rss
-  // const RSS = await getRSS()
-  const RSS = null
+  const RSS = await getRSS()
   return {
     props: { newsJSON, interviewsJSON, RSS },
     revalidate: 60,
