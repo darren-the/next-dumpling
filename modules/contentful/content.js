@@ -2,10 +2,17 @@ import axios from 'axios'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { contentfulOptions } from './contentful-options'
 
-export const getContent = async (contentType, id) => {
+export const getContent = async ({
+  contentType,
+  id,
+  noBody,
+}) => {
   const url = process.env.baseURL + `/contentful/${contentType}`
-  const response = (id) ? await axios.get(`${url}?id=${id}`) : await axios.get(url)
-
+  const params = '?' + [
+    ... id ? [`id=${id}`] : [],
+    ... noBody ? [`noBody=${noBody}`] : [],
+  ].join('&')
+  const response = await axios.get(url + params)
   const content = response.data.map((item) => {
     return {
       ...item,

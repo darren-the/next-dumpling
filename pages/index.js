@@ -42,6 +42,7 @@ const Index = ({ newsJSON, interviewsJSON, RSS }) => {
 
   return (
     <div>
+      {/* {document.getElementById("__NEXT_DATA__").text} */}
       <NextSeo
         title="The Dumpling: Bao-sized News on Web 3.0, Asian Culture, Crypto, and NFTs"
         description="Read the latest news on asian culture, cryptocurrency, NFTs, and upcoming projects on the blockchain."
@@ -85,9 +86,15 @@ const Index = ({ newsJSON, interviewsJSON, RSS }) => {
 export const getStaticProps = async () => {
 
   // fetch content
-  const news = await getContent('news')
+  const news = await getContent({
+    contentType: 'news',
+    noBody: 1,
+  })
   const newsJSON = JSON.stringify(news)
-  const interviews = await getContent('interviews')
+  const interviews = await getContent({
+    contentType: 'interviews',
+    noBody: 1,
+  })
   const interviewsJSON = JSON.stringify(interviews)
 
   //fetch rss

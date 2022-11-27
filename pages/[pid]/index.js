@@ -47,7 +47,10 @@ export const getStaticPaths = () => {
 export const getStaticProps = async ({ params }) => {
   var contentJSON = JSON.stringify([])
   if (params.pid === 'news' || params.pid === 'interviews') {
-    const content = await getContent(params.pid)
+    const content = await getContent({
+      contentType: params.pid,
+      noBody: 1,
+    })
     contentJSON = JSON.stringify(content)
   }
 

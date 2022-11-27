@@ -101,7 +101,10 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const content = await getContent(params.pid, params.contentId)
+  const content = await getContent({
+    contentType: params.pid,
+    id: params.contentId,
+  })
   const contentJSON = JSON.stringify((content && content.length > 0)
       ? content[0]
       : {}  
