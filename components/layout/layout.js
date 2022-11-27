@@ -1,11 +1,11 @@
-import NavbarDesktop from "./navbar-desktop"
+import Navbar from "./navbar"
 import Tickers from "./tickers"
 
 const Layout = ({ children }) => {
   return (
     <div>
       <Tickers />
-      <NavbarDesktop />
+      <Navbar />
       <div className="main-content">
         {children}
       </div>

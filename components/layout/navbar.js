@@ -5,7 +5,7 @@ import styles from './navbar.module.css'
 import Button from '../button'
 import { useState } from 'react'
 
-const NavbarDesktop = () => {
+const Navbar = () => {
   const router = useRouter()
 
   const menuIds = ['news', 'memes', 'interviews', 'jobs']
@@ -127,4 +127,4 @@ const NavbarDesktop = () => {
   )
 }
 
-export default NavbarDesktop
+export default Navbar
