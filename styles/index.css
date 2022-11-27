@@ -4,22 +4,26 @@
 
 @font-face {
   font-family: "jakarta-extrabold";
-  src: url("../public/fonts/static/PlusJakartaSans-ExtraBold.ttf")
+  src: url("../public/fonts/static/PlusJakartaSans-ExtraBold.ttf");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "jakarta-bold";
-  src: url("../public/fonts/static/PlusJakartaSans-Bold.ttf")
+  src: url("../public/fonts/static/PlusJakartaSans-Bold.ttf");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "jakarta-medium";
-  src: url("../public/fonts/static/PlusJakartaSans-Medium.ttf")
+  src: url("../public/fonts/static/PlusJakartaSans-Medium.ttf");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "jakarta-regular";
-  src: url("../public/fonts/static/PlusJakartaSans-Regular.ttf")
+  src: url("../public/fonts/static/PlusJakartaSans-Regular.ttf");
+  font-display: swap;
 }
 
 @layer base {
