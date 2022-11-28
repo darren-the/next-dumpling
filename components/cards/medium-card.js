@@ -9,7 +9,7 @@ const MediumCard = ({
   return (
     <div className={`w-full block mb-4 ${(borderBottom) ? 'bottom-border' : ''}`}>
       <Tag contentType={content.contentType} tag={content.tag} />
-      <div className="h-[195px] w-full my-4 min-w-[200px] image-wrapper">
+      <div className="my-4 w-full min-w-[200px] image-wrapper aspect-[2/1] xl:aspect-auto xl:h-[195px]">
         <Image src={content.banner.url} alt={content.title + ' image'} className="object-cover" layout="fill"/>
       </div>
       <h2 className="base-extrabold-text">{content.title}</h2>

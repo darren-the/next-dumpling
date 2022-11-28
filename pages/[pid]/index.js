@@ -22,7 +22,7 @@ const Preview = ({ contentJSON }) => {
   return (
     <div className="flex flex-col items-center">
       <NextSeo {...metadata[route]} />
-      <div className="p-8 max-w-[500px] xl:max-w-none xl:w-full xl:grid xl:grid-cols-grid-view xl:justify-evenly">
+      <div className="p-8 w-full xl:max-w-none xl:w-[95%] xl:grid xl:grid-cols-grid-view xl:justify-evenly">
         <Header contentType={route} />
         <div className="w-full h-full"></div>
         {contentCards}

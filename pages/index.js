@@ -63,7 +63,7 @@ const Index = ({ newsJSON, interviewsJSON, RSS }) => {
             {smallNewsCards}
           </div>
 
-          <div className="grid-in-interviews flex flex-col w-full xl:w-[95%] xl:ml-4 mb-8 max-w-[485px]"> {/* max-w-[485px] */}
+          <div className="grid-in-interviews flex flex-col w-full xl:w-[95%] xl:ml-4 mb-8 xl:max-w-[485px]"> {/* max-w-[485px] */}
             <Link href="/news">
               <a><Header contentType="interviews" /></a>
             </Link>
