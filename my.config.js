@@ -36,10 +36,11 @@ export const defaultConfigSEO = {
     description: metadata.news.description,
     images: [
       {
-        url: 'https://www.thedumpling.xyz/assets/opengraph-image.svg',
+        url: 'https://www.thedumpling.xyz/assets/opengraph-image.jpg',
         width: 1200,
         height: 627,
         alt: 'The Dumpling open graph image',
+        type: 'image/jpeg',
       }
     ]
   }
