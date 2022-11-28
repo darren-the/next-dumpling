@@ -1,4 +1,4 @@
-import Metadata from "../../components/cards/metadata"
+import Publication from "../../components/cards/publication"
 import Tag from "../../components/tag"
 import { getContent, getContentIds } from "../../modules/contentful/content"
 import Image from "next/image"
@@ -24,10 +24,10 @@ const Content = ({ contentJSON, RSS }) => {
   return (
     <div className="grid grid-areas-content grid-cols-content">
       <NextSeo
-        title={content.title + " - The Dumpling"}
+        title={'The Dumpling - ' + content.title}
         description={content.description}
         openGraph={{
-          title: content.title + ' - The Dumpling',
+          title: 'The Dumpling - ' + content.title,
           description: content.description,
           images: [
             {
@@ -47,7 +47,7 @@ const Content = ({ contentJSON, RSS }) => {
           <div className="flex flex-col w-full mb-8 self-center">
             <h1 className="heading-extrabold mt-[10px]">{content.title}</h1>
             <p className="base-medium-text mb-[10px]">{content.description}</p>
-            <Metadata author={content.author} published={content.published} />
+            <Publication author={content.author} published={content.published} />
           </div>
 
           <div className="flex self-center image-wrapper">

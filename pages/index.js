@@ -44,8 +44,6 @@ const Index = ({ newsJSON, interviewsJSON, RSS }) => {
     <div>
       {/* {document.getElementById("__NEXT_DATA__").text} */}
       <NextSeo
-        title="The Dumpling: Bao-sized News on Web 3.0, Asian Culture, Crypto, and NFTs"
-        description="Read the latest news on asian culture, cryptocurrency, NFTs, and upcoming projects on the blockchain."
         additionalLinkTags={[
           {
             rel: "icon",

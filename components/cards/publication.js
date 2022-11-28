@@ -1,4 +1,4 @@
-const Metadata = (props) => {
+const Publication = (props) => {
     const date = new Date(props.published)
     const dateString = `${new Intl.DateTimeFormat("en-US", { month: "short"}).format(date)} ${date.getDate()}, ${date.getFullYear()}`
 
@@ -13,9 +13,9 @@ const Metadata = (props) => {
     )
 }
 
-export default Metadata
+export default Publication
 
-Metadata.defaultProps = {
+Publication.defaultProps = {
     author: "Anonymous",
     published: "2022-01-01",
 }

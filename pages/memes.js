@@ -1,6 +1,7 @@
 import { getTweets } from "../modules/contentful/twitter"
 import { TwitterTweetEmbed } from 'react-twitter-embed'
 import { NextSeo } from 'next-seo'
+import { metadata } from "../my.config"
 
 const Memes = ({ tweetsJSON }) => {
   const tweets = JSON.parse(tweetsJSON)
@@ -29,10 +30,7 @@ const Memes = ({ tweetsJSON }) => {
 )
   return (
     <div className="flex flex-col p-8">
-      <NextSeo
-        title="Memes - The Dumpling"
-        description="placeholder memes description"
-      />
+      <NextSeo {...metadata.memes} />
       {/* desktop view */}
       <div className="hidden min-[1000px]:grid grid-cols-grid-view w-full justify-evenly">
         <div className="pr-4 flex flex-col">

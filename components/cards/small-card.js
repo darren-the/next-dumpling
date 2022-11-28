@@ -1,6 +1,6 @@
 import Tag from '../tag'
 import Image from 'next/image'
-import Metadata from './metadata'
+import Publication from './publication'
 import { limitStrLength } from '../../utils/string-utils'
 
 const SmallCard = ({
@@ -16,7 +16,7 @@ const SmallCard = ({
         <Tag className="h-4" contentType={content.contentType} tag={content.tag} />
         <h2 className="base-extrabold-text my-[0.2em]">{content.title}</h2>
         <p className="mb-[6px] text-medium-sm-darkgray w-fit">{limitStrLength(content.description)}</p>
-        <div className=""><Metadata author={content.author} published={content.published}/></div>
+        <div className=""><Publication author={content.author} published={content.published}/></div>
       </div>
     </div>
   )

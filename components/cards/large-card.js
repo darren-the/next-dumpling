@@ -1,6 +1,6 @@
 import Tag from '../tag'
 import Image from 'next/image'
-import Metadata from './metadata'
+import Publication from './publication'
 
 const LargeCard = ({
     borderBottom,
@@ -14,7 +14,7 @@ const LargeCard = ({
       </div>
       <h2 className="text-2xl font-jakarta-bold text-black">{content.title}</h2>
       <p className="pt-[0.3rem] mb-9 text-medium-sm-darkgray">{content.description}</p>
-      <div className="mb-6"><Metadata author={content.author} published={content.published}/></div>
+      <div className="mb-6"><Publication author={content.author} published={content.published}/></div>
     </div>
   )
 }

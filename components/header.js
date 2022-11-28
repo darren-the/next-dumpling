@@ -1,5 +1,5 @@
-import Image from "next/image"
-import { headerConfig } from "../modules/config"
+import Image from 'next/image'
+import { headerConfig } from '../my.config'
 
 const Header = ({ contentType }) => {
   return (

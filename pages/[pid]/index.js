@@ -4,7 +4,7 @@ import LargeCard from '../../components/cards/large-card'
 import Header from '../../components/header'
 import { getContent } from '../../modules/contentful/content'
 import { NextSeo } from 'next-seo'
-import { headerConfig } from '../../modules/config'
+import { metadata } from '../../my.config'
 
 const Preview = ({ contentJSON }) => {
   const route = useRouter().asPath.slice(1)
@@ -21,10 +21,7 @@ const Preview = ({ contentJSON }) => {
 
   return (
     <div className="flex flex-col items-center">
-      <NextSeo
-        title={route.charAt(0).toUpperCase() + route.slice(1) + " - The Dumpling"}
-        description={headerConfig[route]}
-      />
+      <NextSeo {...metadata[route]} />
       <div className="p-8 max-w-[500px] xl:max-w-none xl:w-full xl:grid xl:grid-cols-grid-view xl:justify-evenly">
         <Header contentType={route} />
         <div className="w-full h-full"></div>
