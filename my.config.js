@@ -37,7 +37,7 @@ export const defaultConfigSEO = {
     images: [
       {
         url: 'https://www.thedumpling.xyz/assets/opengraph-image.jpg',
-        width: 1200,
+        width: 1114,
         height: 627,
         alt: 'The Dumpling open graph image',
         type: 'image/jpeg',

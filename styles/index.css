@@ -102,6 +102,6 @@
   }
 
   .image-wrapper {
-    @apply relative overflow-hidden;
+    @apply relative overflow-hidden; /* border-black border-solid rounded border */
   }
 }
