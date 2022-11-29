@@ -45,7 +45,7 @@ const Navbar = () => {
   const mobileHeader = (
     <div className="h-[56px] w-screen fixed top-0 left-0 centering z-10 bg-white md:hidden">
       <button className="bg-none border-none absolute left-6 cursor-pointer centering" onClick={toggleNav}>
-        <img src={'/assets/navbar-expand-btn.svg'} alt="expand button" height={18} width={19}/>
+        <Image src={'/assets/navbar-expand-btn.svg'} alt="expand button" height={18} width={19}/>
       </button>
       <Link href="/">
         <a className="select-none centering">
@@ -72,6 +72,7 @@ const Navbar = () => {
               width={313}
               height={114} 
             />
+            <noscript>hello there is no script here</noscript>
           </a>
         </Link>
         
