@@ -70,7 +70,8 @@ const Navbar = () => {
               src="/assets/logo.svg"
               alt="The Dumpling logo"
               width={313}
-              height={114} 
+              height={114}
+              priority={true}
             />
             <noscript>hello there is no script here</noscript>
           </a>
