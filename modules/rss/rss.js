@@ -6,7 +6,7 @@ export const getRSS = async () => {
         
   const feeds = await Promise.all(newsSources.map((source) => 
     axios.get(`${process.env.baseURL}/${source}`).then((response) =>
-      response.data.rss.channel.item.map((item) => {
+      response.data.rss && response.data.rss.channel.item.map((item) => {
         // any source-sepcific preprocessing will occur here:
         if (source === "cointelegraph") {
           // author parse
