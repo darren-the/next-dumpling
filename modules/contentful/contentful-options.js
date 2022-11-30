@@ -3,6 +3,8 @@ import { TwitterTweetEmbed } from 'react-twitter-embed'
 import styles from './contentful.module.css'
 import Image from 'next/image'
 
+// TODO: Fix - some stylings don't work unless used in contentful.module.css
+
 const paragraphComponent = (children) => {
     // embed tweet if link is provided
     if (children && children.length > 0 && typeof children[0] === "string") {
@@ -40,8 +42,8 @@ export const contentfulOptions = {
       [BLOCKS.HEADING_4]: (node, children) => <h4 className={`${styles.contentfulHeading} leading-[1.7rem]`}>{children}</h4>,
       [BLOCKS.HEADING_5]: (node, children) => <h5 className={`${styles.contentfulHeading} leading-[1.5rem]`}>{children}</h5>,
       [BLOCKS.HEADING_6]: (node, children) => <h6 className={`${styles.contentfulHeading} leading-[1.35rem]`}>{children}</h6>,
-      [BLOCKS.UL_LIST]: (node, children) => <ul className="ml-5 list-disc">{children}</ul>,
-      [BLOCKS.LIST_ITEM]: (node, children) => <li className="mt-0 ml-[2.5rem] inline leading-[1.8rem]">{children}</li>,
+      [BLOCKS.UL_LIST]: (node, children) => <ul className="list-disc">{children}</ul>,
+      [BLOCKS.LIST_ITEM]: (node, children) => <li className={styles.contentfulListItem}>{children}</li>,
       [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
         const fields = node.data.target.fields
         return (

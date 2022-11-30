@@ -1,7 +1,11 @@
 .contentfulText {
-  @apply font-jakarta-medium text-sm leading-6 text-custom-darkgray mt-5;
+  @apply font-jakarta-medium text-sm leading-6 text-custom-darkgray my-[0.675rem];
 }
 
 .contentfulHeading {
-  @apply font-jakarta-medium text-custom-darkgray mt-5;
+  @apply font-jakarta-medium text-custom-darkgray my-[0.675rem];
+}
+
+.contentfulListItem {
+  @apply text-custom-darkgray mt-[-0.675rem] ml-5;
 }
