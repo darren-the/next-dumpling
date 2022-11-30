@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react"
 import { getTickers } from '../../modules/tickers/tickers'
 import Image from 'next/image'
 import { useQuery } from 'react-query'
@@ -28,6 +27,7 @@ const Tickers = () => {
             width={40}
             height={40}
             layout="fixed"
+            priority={true}
           />
         </div>
           

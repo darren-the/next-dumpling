@@ -45,11 +45,23 @@ const Navbar = () => {
   const mobileHeader = (
     <div className="h-[56px] w-screen fixed top-0 left-0 centering z-10 bg-white md:hidden">
       <button className="bg-none border-none absolute left-6 cursor-pointer centering" onClick={toggleNav}>
-        <Image src={'/assets/navbar-expand-btn.svg'} alt="expand button" height={18} width={19}/>
+        <Image
+          src={'/assets/navbar-expand-btn.svg'}
+          alt="expand button"
+          height={18}
+          width={19}
+          priority={true}
+        />
       </button>
       <Link href="/">
         <a className="select-none centering">
-          <Image src={'/assets/logo-small.svg'} alt="navbar tight logo" height={47} width={151} />
+          <Image
+            src={'/assets/logo-small.svg'}
+            alt="navbar tight logo"
+            height={47}
+            width={151}
+            priority={true}
+          />
         </a>
       </Link>     
     </div>
@@ -89,14 +101,26 @@ const Navbar = () => {
 
         <div className="p-6 bottom-border">
           <div className="flex flex-row w-[fit-content]">
-            <Image src="/assets/search-icon.svg" alt="search icon" width={14} height={16} />
+            <Image
+              src="/assets/search-icon.svg"
+              alt="search icon"
+              width={14}
+              height={16}
+              priority={true}
+            />
             <p className="base-bold-text ml-6">Search</p>
           </div>
         </div>
 
         <div className="p-6 bottom-border">
           <div className="flex flex-row w-[fit-content]">
-            <Image src="/assets/about-icon.svg" alt="search icon" width={20} height={20} />
+            <Image
+              src="/assets/about-icon.svg"
+              alt="search icon"
+              width={20}
+              height={20}
+              priority={true}
+            />
             <p className="base-bold-text ml-4">About</p>
           </div>
         </div>
@@ -108,7 +132,13 @@ const Navbar = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <Image src="/assets/discord-icon.svg" alt="discord icon" width={20} height={14}/>
+            <Image
+              src="/assets/discord-icon.svg"
+              alt="discord icon"
+              width={20}
+              height={14}
+              priority={true}
+            />
             <p className={styles.socialText}>Discuss</p>
           </a>
 
@@ -118,7 +148,13 @@ const Navbar = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <Image src="/assets/twitter-icon.svg" alt="discord icon" width={18} height={14}/>
+            <Image
+              src="/assets/twitter-icon.svg"
+              alt="discord icon"
+              width={18}
+              height={14}
+              priority={true}
+            />
             <p className={styles.socialText}>Follow</p>
           </a>
         </div>

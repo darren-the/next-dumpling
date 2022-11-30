@@ -56,6 +56,7 @@ const Content = ({ contentJSON, RSS }) => {
               alt="content banner"
               height={content.banner.height}
               width={content.banner.width}
+              priority={true}
             />
           </div>
 
