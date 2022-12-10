@@ -9,38 +9,41 @@ const queryClient = new QueryClient()
 
 const MyApp = ({ Component, pageProps }) => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Layout>
+    <>
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-5X4N0WLSWE"
+      />
 
-        <Script 
-          id="Adsense-id"
-          data-ad-client="ca-pub-6733088504690949"
-          async="true"
-          strategy="afterInteractive"
-          onError={ (e) => { console.error('Script failed to load', e) }}
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-          crossOrigin='anonymous'
-        />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {
+          `window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
 
-        <Script
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-5X4N0WLSWE"
-        />
+          gtag('config', 'G-5X4N0WLSWE');`
+        }
+      </Script>
+      <QueryClientProvider client={queryClient}>
+        <Layout>
 
-        <Script id="google-analytics" strategy="afterInteractive">
-          {
-            `"window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+          <Script 
+            id="Adsense-id"
+            data-ad-client="ca-pub-6733088504690949"
+            async="true"
+            strategy="afterInteractive"
+            onError={ (e) => { console.error('Script failed to load', e) }}
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+            crossOrigin='anonymous'
+          />
 
-            gtag('config', 'G-5X4N0WLSWE');"`
-          }
-        </Script>
+          
 
-        <DefaultSeo {...defaultConfigSEO} />
-        <Component {...pageProps} />
-      </Layout>
-    </QueryClientProvider>
+          <DefaultSeo {...defaultConfigSEO} />
+          <Component {...pageProps} />
+        </Layout>
+      </QueryClientProvider>
+    </>
   )
 }
 
