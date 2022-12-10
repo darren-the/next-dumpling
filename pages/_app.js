@@ -11,6 +11,7 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <QueryClientProvider client={queryClient}>
       <Layout>
+
         <Script 
           id="Adsense-id"
           data-ad-client="ca-pub-6733088504690949"
@@ -20,6 +21,22 @@ const MyApp = ({ Component, pageProps }) => {
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
           crossOrigin='anonymous'
         />
+
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-5X4N0WLSWE"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {
+            `"window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-5X4N0WLSWE');"`
+          }
+        </Script>
+
         <DefaultSeo {...defaultConfigSEO} />
         <Component {...pageProps} />
       </Layout>
