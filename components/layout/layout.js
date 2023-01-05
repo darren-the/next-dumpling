@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
     <div>
       <Tickers />
       <Navbar />
-      <div className="main-content">
+      <div className="page-layout">
         {children}
       </div>
     </div>

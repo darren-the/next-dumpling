@@ -25,14 +25,14 @@ const Memes = ({ tweetsJSON }) => {
 
     return tweetEmbed
   }
-  
-  
 )
   return (
-    <div className="flex flex-col p-8">
+    <div className="main">
       <NextSeo {...metadata.memes} />
+      {/* TODO: Make a function for a pinterest-like board. Also allow for 3 columns*/}
+
       {/* desktop view */}
-      <div className="hidden min-[1000px]:grid grid-cols-grid-view w-full justify-evenly">
+      <div className="hidden w-full min-[1000px]:grid xl:grid-cols-grid-view">
         <div className="pr-4 flex flex-col">
           {tweetsLeft}
         </div>

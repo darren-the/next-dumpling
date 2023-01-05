@@ -22,7 +22,7 @@ const Content = ({ contentJSON, RSS }) => {
   ) : null
 
   return (
-    <div className="grid grid-areas-content grid-cols-content">
+    <div className="grid grid-areas-content-mobile grid-cols-1 min-[1300px]:grid-areas-content-desktop min-[1300px]:grid-cols-content">
       <NextSeo
         title={'The Dumpling - ' + content.title}
         description={content.description}
@@ -39,7 +39,7 @@ const Content = ({ contentJSON, RSS }) => {
           ]
         }}
       />
-      <div className="grid-in-content-outer p-8 flex flex-col justify-center max-w-[865px]">
+      <div className="grid-in-content-outer main flex-col max-w-[1100px]">
         <div className="flex flex-col mb-8">
 
           <Tag contentType={content.contentType} tag={content.tag} />
@@ -49,19 +49,21 @@ const Content = ({ contentJSON, RSS }) => {
             <p className="base-medium-text mb-[10px]">{content.description}</p>
             <Publication author={content.author} published={content.published} />
           </div>
+          
+          <div className="flex flex-col items-center">
+            <div className="flex self-center image-wrapper">
+              <Image 
+                src={content.banner.url}
+                alt="content banner"
+                height={content.banner.height}
+                width={content.banner.width}
+                priority={true}
+              />
+            </div>
 
-          <div className="flex self-center image-wrapper">
-            <Image 
-              src={content.banner.url}
-              alt="content banner"
-              height={content.banner.height}
-              width={content.banner.width}
-              priority={true}
-            />
+            <div className="flex flex-col w-full min-[1500px]:w-[65%]">{content.body}</div>
           </div>
-
-          <div className="flex flex-col">{content.body}</div>
-        
+          
         </div>
 
         <div className="bg-custom-blue p-8 rounded-md flex justify-center">
@@ -86,7 +88,7 @@ const Content = ({ contentJSON, RSS }) => {
         </div>
       </div>
 
-      <div className="grid-in-content-side left-border"></div>
+      <div className="grid-in-content-ad left-border h-20 md:h-[160px] min-[1300px]:h-full min-[1300px]:w-[313px]"></div>
 
     </div>
   )

@@ -61,8 +61,12 @@
 }
 
 @layer components {
-  .main-content {
+  .page-layout {
     @apply md:ml-[313px] mt-[116px] md:mt-[60px] min-h-[calc(100vh-60px)] w-[1fr] bg-custom-bg-gray overflow-hidden;
+  }
+
+  .main {
+    @apply flex justify-start py-8 px-[3%] min-[370px]:px-[5%] min-[390px]:p-8;
   }
 
   .top-border {

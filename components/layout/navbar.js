@@ -8,23 +8,24 @@ import { useState } from 'react'
 const Navbar = () => {
   const router = useRouter()
 
-  const menuIds = ['news', 'memes', 'interviews', 'jobs']
+  const menuIds = ['', 'news', 'memes', 'interviews', 'jobs']
   const menuNames = {
-    [menuIds[0]]: 'Web3 News',
-    [menuIds[1]]: 'Memes',
-    [menuIds[2]]: 'Interviews',
-    [menuIds[3]]: 'Crypto Jobs',
+    [menuIds[0]]: 'Home',
+    [menuIds[1]]: 'Web3 News',
+    [menuIds[2]]: 'Memes',
+    [menuIds[3]]: 'Interviews',
+    [menuIds[4]]: 'Crypto Jobs',
   }
-  const menu = menuIds.map(id =>
-    <Link href={`/${id}`} key={id}>
-      <a 
-        className={
-          `text-base py-2 pl-4 border-l-4 border-solid prim-trans w-[fit-content]
-          ${router.asPath === '/' + id ? styles.active : styles.inactive}`
-        }
-      >{menuNames[id]}</a>
-    </Link>
-  )
+  const menu = menuIds.map(id => {
+    const menuClass = `text-base py-2 pl-4 border-l-4 border-solid prim-trans w-[fit-content] ${router.asPath === '/' + id ? styles.active : styles.inactive}`
+    return (id === 'jobs')
+      ? <a href="https://cryptojobs.xyz/" className={menuClass}>{menuNames[id]}</a>
+      : <Link href={`/${id}`} key={id}>
+          <a 
+            className={menuClass}
+          >{menuNames[id]}</a>
+        </Link>
+  })
 
   const [showNav, setShowNav] = useState(false)
   const [grayscreenStyle, setGrayscreenStyle] = useState('hidden')
@@ -85,7 +86,6 @@ const Navbar = () => {
               height={114}
               priority={true}
             />
-            <noscript>hello there is no script here</noscript>
           </a>
         </Link>
         
@@ -99,7 +99,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="p-6 bottom-border">
+        {/* <div className="p-6 bottom-border">
           <div className="flex flex-row w-[fit-content]">
             <Image
               src="/assets/search-icon.svg"
@@ -110,19 +110,25 @@ const Navbar = () => {
             />
             <p className="base-bold-text ml-6">Search</p>
           </div>
-        </div>
+        </div> */}
 
         <div className="p-6 bottom-border">
-          <div className="flex flex-row w-[fit-content]">
-            <Image
-              src="/assets/about-icon.svg"
-              alt="search icon"
-              width={20}
-              height={20}
-              priority={true}
-            />
-            <p className="base-bold-text ml-4">About</p>
-          </div>
+          <a
+            href=" https://medium.com/@fortunefriendsclub/the-dumpling-bite-sized-nft-news-c1527bacec52"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <div className="flex flex-row w-[fit-content]">
+              <Image
+                src="/assets/about-icon.svg"
+                alt="about icon"
+                width={20}
+                height={20}
+                priority={true}
+              />
+              <p className="base-bold-text ml-4">About</p>
+            </div>
+          </a>
         </div>
 
         <div className="px-[18px] py-[12px] md:p-6 flex flex-row justify-between items-center gap-x-[8.5px]">

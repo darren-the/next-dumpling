@@ -41,7 +41,7 @@ const Index = ({ newsJSON, interviewsJSON, RSS }) => {
   ) : null
 
   return (
-    <div>
+    <div className="main">
       {/* {document.getElementById("__NEXT_DATA__").text} */}
       <NextSeo
         additionalLinkTags={[
@@ -51,31 +51,28 @@ const Index = ({ newsJSON, interviewsJSON, RSS }) => {
           }
         ]}
       />
-      
-      <div className="flex justify-center py-8 px-[3%] min-[370px]:px-[5%] min-[390px]:p-8">
-        <div className="w-full grid grid-areas-home-mobile xl:grid-cols-home-desktop justify-items-center xl:grid-areas-home-desktop xl:justify-evenly">
-          {/* TODO: set width to full for mobile view, once we are set on a desktop width */}
-          <div className="grid-in-news flex flex-col w-full xl:w-[95%] xl:mr-4 mb-8 max-w-[900px]"> {/* max-w-[900px] */}
-            <Link href="/news">
-              <a><Header contentType="news" /></a>
-            </Link>
-            {largeNewsCard}
-            {smallNewsCards}
-          </div>
-
-          <div className="grid-in-interviews flex flex-col w-full xl:w-[95%] xl:ml-4 mb-8 xl:max-w-[485px]"> {/* max-w-[485px] */}
-            <Link href="/news">
-              <a><Header contentType="interviews" /></a>
-            </Link>
-            {interviewCards}
-          </div>
-
-          <div className="grid-in-rss flex flex-col w-full xl:w-[95%] xl:ml-4 max-w-[485px]"> {/* max-w-[485px] */}
-            <Header contentType="rss" />
-            {RSSCards}
-          </div>
-          
+      <div className="w-[1400px] grid grid-areas-home-mobile xl:grid-cols-home-desktop xl:grid-areas-home-desktop xl:justify-start">
+        {/* TODO: set width to full for mobile view, once we are set on a desktop width */}
+        <div className="grid-in-news flex flex-col w-full xl:w-[95%]  mb-8 max-w-[900px]"> {/* max-w-[900px] */}
+          <Link href="/news">
+            <a><Header contentType="news" /></a>
+          </Link>
+          {largeNewsCard}
+          {smallNewsCards}
         </div>
+
+        <div className="grid-in-interviews flex flex-col w-full mb-8 xl:max-w-[485px]"> {/* max-w-[485px] */}
+          <Link href="/news">
+            <a><Header contentType="interviews" /></a>
+          </Link>
+          {interviewCards}
+        </div>
+
+        <div className="grid-in-rss flex flex-col w-full xl:w-[95%] max-w-[485px]"> {/* max-w-[485px] */}
+          <Header contentType="rss" />
+          {RSSCards}
+        </div>
+        
       </div>
     </div>
   )

@@ -16,13 +16,11 @@ const Preview = ({ contentJSON }) => {
       </Link>
     </div>
   ) : null
-  
-  
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="main">
       <NextSeo {...metadata[route]} />
-      <div className="p-8 w-full xl:max-w-none xl:w-[95%] xl:grid xl:grid-cols-grid-view xl:justify-evenly">
+      <div className="w-full grid xl:grid-cols-grid-view">
         <Header contentType={route} />
         <div className="w-full h-full"></div>
         {contentCards}

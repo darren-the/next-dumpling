@@ -29,10 +29,15 @@ module.exports = {
           'interviews',
           'rss',
         ],
-        'content': [
-          'content-outer content-side',
-          'content-rec content-side',
-        ]
+        'content-desktop': [
+          'content-outer content-ad',
+          'content-rec content-ad',
+        ],
+        'content-mobile': [
+          'content-ad',
+          'content-outer',
+          'content-rec',
+        ],
       },
       gridTemplateColumns: {
         'grid-view': 'repeat(2, minmax(0, 900px))',
