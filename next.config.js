@@ -15,6 +15,7 @@ const nextConfig = {
     smallDescLimit: 90,
     homeInterviewLimit: 2,
     homeRSSLimit: 5,
+    memesTweetLimit: 6,
   },
 }
 

@@ -19,7 +19,7 @@ const Navbar = () => {
   const menu = menuIds.map(id => {
     const menuClass = `text-base py-2 pl-4 border-l-4 border-solid prim-trans w-[fit-content] ${router.asPath === '/' + id ? styles.active : styles.inactive}`
     return (id === 'jobs')
-      ? <a href="https://cryptojobs.xyz/" className={menuClass}>{menuNames[id]}</a>
+      ? <a href="https://cryptojobs.xyz/" className={menuClass} key={id}>{menuNames[id]}</a>
       : <Link href={`/${id}`} key={id}>
           <a 
             className={menuClass}
