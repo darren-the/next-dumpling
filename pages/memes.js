@@ -9,12 +9,20 @@ import Masonry from "react-masonry-css"
 const Memes = ({ tweetsJSON }) => {
   const tweets = JSON.parse(tweetsJSON)
 
-  const [tweetEmbeds, setTweetEmbed] = useState([])
-  const [lastIndex, setLastIndex] = useState(0)
+  const [tweetEmbeds, setTweetEmbed] = useState(
+    tweets.slice(0, process.env.memesTweetLimit).map((item) =>
+      <CustomTweetEmbed item={item} key={item.tweetId} />
+    )
+  )
+  const [lastIndex, setLastIndex] = useState(process.env.memesTweetLimit)
   const [hasMore, setHasMore] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
 
   const loadMoreTweets = useCallback(() => {
     // Get the index range of tweets to load
+    if (isLoading) return
+    setIsLoading(true)
+
     const start = lastIndex
     const end = (lastIndex + process.env.memesTweetLimit >= tweets.length)
       ? tweets.length
@@ -26,29 +34,26 @@ const Memes = ({ tweetsJSON }) => {
     setTweetEmbed([
       ...tweetEmbeds,
       tweets.slice(start, end).map((item, index) =>
-        <CustomTweetEmbed item={item} key={index} />
+        <CustomTweetEmbed item={item} key={item.tweetId} />
       )
     ])
-    
-  }, [tweetEmbeds, lastIndex, hasMore])
+    setIsLoading(false)
+  }, [tweetEmbeds, lastIndex, hasMore, isLoading])
 
   return (
     <div className="main">
       <NextSeo {...metadata.memes} />
-      {/* TODO: Make a function for a pinterest-like board. Also allow for 3 columns*/}
 
-      {/* desktop view */}
         <InfiniteScroll
           pageStart={0}
           loadMore={loadMoreTweets}
           hasMore={hasMore}
+          initialLoad={false}
           loader={<div>LOADING</div>}
           threshold={0}
           className="w-full"
         >
-          {/* <div className="w-full max-w-[1032px] flex flex-wrap gap-x-8">
-              {tweetEmbeds}
-          </div> */}
+
           <Masonry
             breakpointCols={{
               default: 2,
@@ -60,12 +65,6 @@ const Memes = ({ tweetsJSON }) => {
           </Masonry>
         </InfiniteScroll>
         
-      
-
-      {/* mobile view */}
-      {/* <div className="flex flex-col w-full items-center min-[1000px]:hidden">
-        {tweetEmbeds}
-      </div> */}
     </div>
   )
 }
