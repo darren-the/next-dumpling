@@ -5,6 +5,7 @@ import { useState, useCallback } from "react"
 import InfiniteScroll from 'react-infinite-scroller'
 import CustomTweetEmbed from "../components/custom-tweet-embed"
 import Masonry from "react-masonry-css"
+import { ClipLoader } from "react-spinners"
 
 const Memes = ({ tweetsJSON }) => {
   const tweets = JSON.parse(tweetsJSON)
@@ -49,7 +50,14 @@ const Memes = ({ tweetsJSON }) => {
           loadMore={loadMoreTweets}
           hasMore={hasMore}
           initialLoad={false}
-          loader={<div>LOADING</div>}
+          loader={
+            <div className="w-full max-w-[1032px] flex justify-center">
+              <ClipLoader
+                height={70}
+                color="#6a6a6a"
+              />
+            </div>
+          }
           threshold={0}
           className="w-full"
         >
