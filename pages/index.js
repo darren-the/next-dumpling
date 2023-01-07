@@ -55,7 +55,7 @@ const Index = ({ newsJSON, interviewsJSON, RSS }) => {
 
     const searchContent = [...news, ...interviews].sort((a, b) => Date.parse(b.published) - Date.parse(a.published))
     const filteredContent = searchContent.filter((item) => {
-      return item.title.match(new RegExp(searchTerm)) != null
+      return item.title.toLowerCase().match(new RegExp(searchTerm.toLowerCase())) != null
     })
     setSearchResults(createSmallCards(filteredContent))
   }
