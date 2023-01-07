@@ -23,14 +23,14 @@ const Index = ({ newsJSON, interviewsJSON, RSS }) => {
 
   // Create small news cards
   // note: this is a function as it is used later for search results
-  const createSmallCards = (content) => {
-    return (content && content.length > 1) ? content.slice(1).map((item, index) =>
+  const createSmallCards = (content) =>
+    content.map((item, index) =>
       <Link href={`/${content.contentType}/${item['contentfulId']}`} key={index}>
         <a><SmallCard content={item} /></a>
       </Link>
-    ) : null
-  }
-  const smallNewsCards = createSmallCards(news)
+    )
+
+  const smallNewsCards = (news && news.length > 1) ? createSmallCards(news.slice(1)) : null
 
   // Create interview cards
   const interviewCards = (interviews && interviews.length > 0) ? interviews.slice(0, process.env.homeInterviewLimit).map((item, index) =>
@@ -74,7 +74,7 @@ const Index = ({ newsJSON, interviewsJSON, RSS }) => {
 
       {/* Search bar */}
       <form className="appearance-none mb-[26px]">
-        <div className="w-[365px] h-[40px] border-2 border-black rounded-full flex items-center px-4 select-none">
+        <div className="max-w-[365px] h-[40px] border-2 border-black rounded-full flex items-center px-4 select-none">
           <Image
             src="/assets/search-icon.svg"
             alt="search icon"
@@ -100,7 +100,7 @@ const Index = ({ newsJSON, interviewsJSON, RSS }) => {
 
       <div className={
         `${(isSearching) ? 'hidden' : ''}
-        w-[1400px] grid grid-areas-home-mobile xl:grid-cols-home-desktop xl:grid-areas-home-desktop xl:justify-start`
+        max-w-[1400px] grid grid-areas-home-mobile xl:grid-cols-home-desktop xl:grid-areas-home-desktop xl:justify-start`
       }>
         {/* TODO: set width to full for mobile view, once we are set on a desktop width */}
         <div className="grid-in-news flex flex-col w-full xl:w-[95%]  mb-8 max-w-[900px]"> {/* max-w-[900px] */}
