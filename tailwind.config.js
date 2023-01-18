@@ -47,8 +47,9 @@ module.exports = {
         'home-desktop': '65% 35%',
         '2-memes': 'repeat(2, minmax(0, 500px))',
       },
-      gridtemplateRows: {
+      gridTemplateRows: {
         '2-auto': 'auto auto',
+        'home-desktop': 'auto 1fr',
       },
     },
   },
