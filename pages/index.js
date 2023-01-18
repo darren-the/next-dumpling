@@ -9,6 +9,11 @@ import { getRSS } from '../modules/rss/rss'
 import NoImageCard from '../components/cards/no-image-card'
 import Image from 'next/image'
 import { useState } from 'react'
+import { Oval } from "react-loader-spinner"
+import { useQuery } from 'react-query'
+import { useDebounce } from 'use-debounce'
+import InfiniteScrollCards from '../components/infinite-scroll-cards'
+
 
 const Index = ({ newsJSON, interviewsJSON, RSS }) => {
   const news = JSON.parse(newsJSON)
@@ -23,13 +28,15 @@ const Index = ({ newsJSON, interviewsJSON, RSS }) => {
 
   // Create small news cards
   // note: this is a function as it is used later for search results
-  const createSmallCards = (content) =>
-    content.map((item, index) =>
+  const createSmallCards = (content) => {
+    if (!content) return
+    return content.map((item, index) =>
       <Link href={`/${content.contentType}/${item['contentfulId']}`} key={index}>
         <a><SmallCard content={item} /></a>
       </Link>
     )
-
+  }
+    
   const smallNewsCards = (news && news.length > 1) ? createSmallCards(news.slice(1)) : null
 
   // Create interview cards
@@ -46,18 +53,56 @@ const Index = ({ newsJSON, interviewsJSON, RSS }) => {
     </a>
   ) : null
 
-  // Search
+  // ======================== Search ========================
   const [isSearching, setIsSearching] = useState(false)
-  const [searchResults, setSearchResults] = useState([])
-  const search = async (searchTerm) => {
-    if (searchTerm === '') setIsSearching(false)
-    else setIsSearching(true)
+  const [searchTerm, setSearchTerm] = useState('')
 
-    const searchContent = [...news, ...interviews].sort((a, b) => Date.parse(b.published) - Date.parse(a.published))
-    const filteredContent = searchContent.filter((item) => {
-      return item.title.toLowerCase().match(new RegExp(searchTerm.toLowerCase())) != null
+  // Define function that will fetch and concat data to be searched
+  const getSearchResults = async (text) =>{
+    console.log('fetch')
+    const newsResults = await getContent({
+      contentType: 'news',
+      noBody: 1,
     })
-    setSearchResults(createSmallCards(filteredContent))
+
+    const interviewResults = await getContent({
+      contentType: 'interviews',
+      noBody: 1,
+    })
+    const results = [...newsResults, ...interviewResults].sort((a, b) => Date.parse(b.published) - Date.parse(a.published))
+    const filteredContent = results.filter((item) => {
+      return item.title.toLowerCase().match(new RegExp(text.toLowerCase())) != null
+    })
+    return createSmallCards(filteredContent)
+  }
+
+  // Define query that will call the above function
+  const debouncedSearch = useDebounce(searchTerm, 1000)
+  const { data, isLoading } = useQuery(
+    ['search', debouncedSearch],
+    () => {
+      console.log(isLoading)
+      return getSearchResults(debouncedSearch[0])
+    },
+    { 
+      placeholderData: <div className="flex justify-center"><Oval
+        visible={true}
+        height={50}
+        width={50}
+        color="#6a6a6a"
+        strokeWidth={3}
+        secondaryColor="#9c9c9c"
+        strokeWidthSecondary={3}
+      /></div>,
+      enabled: Boolean(searchTerm),
+    }
+  )
+
+  // Trigger this on input change of search bar
+  const search = (text) => {
+    if (text === '') setIsSearching(false)
+    else setIsSearching(true)
+    setSearchTerm(text)
   }
 
   return (
@@ -95,20 +140,29 @@ const Index = ({ newsJSON, interviewsJSON, RSS }) => {
       <div className={
         `${(!isSearching) ? 'hidden' : ''} max-w-[900px]`
       }>
-        {searchResults}
+        {data}
       </div>
 
       <div className={
         `${(isSearching) ? 'hidden' : ''}
         max-w-[1400px] grid grid-areas-home-mobile xl:grid-cols-home-desktop xl:grid-rows-home-desktop xl:grid-areas-home-desktop xl:justify-start`
       }>
-        {/* TODO: set width to full for mobile view, once we are set on a desktop width */}
+
         <div className="grid-in-news flex flex-col w-full xl:w-[95%]  mb-8 max-w-[900px]">
           <Link href="/news">
             <a><Header contentType="news" /></a>
           </Link>
           {largeNewsCard}
-          {smallNewsCards}
+          <InfiniteScrollCards
+            initialContent={news.slice(1)}
+            contentType='news'
+            cardWrapper={createSmallCards}
+            className="w-full hidden xl:inline-block"
+            limit={process.env.homeNewsLimit}
+          />
+          <div className="xl:hidden">
+            {smallNewsCards}
+          </div>
         </div>
 
         <div className="grid-in-interviews flex flex-col w-full mb-8 xl:max-w-[485px]">
@@ -134,11 +188,15 @@ export const getStaticProps = async () => {
   const news = await getContent({
     contentType: 'news',
     noBody: 1,
+    start: 0,
+    end: process.env.homeNewsLimit,
   })
   const newsJSON = JSON.stringify(news)
   const interviews = await getContent({
     contentType: 'interviews',
     noBody: 1,
+    start: 0,
+    end: process.env.homeInterviewLimit,
   })
   const interviewsJSON = JSON.stringify(interviews)
 

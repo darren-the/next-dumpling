@@ -5,25 +5,33 @@ import Header from '../../components/header'
 import { getContent } from '../../modules/contentful/content'
 import { NextSeo } from 'next-seo'
 import { metadata } from '../../my.config'
+import InfiniteScrollCards from '../../components/infinite-scroll-cards'
+
 
 const Preview = ({ contentJSON }) => {
   const route = useRouter().asPath.slice(1)
   const content = JSON.parse(contentJSON)
-  const contentCards = (content && content.length > 0) ? content.map((item, index) =>
-    <div key={index} className={`${(index % 2 ===0) ? 'xl:pr-4' : 'xl:pl-4'} pt-4`}>
-      <Link href={`/${route}/${item.contentfulId}`}>
-        <a><LargeCard content={item} borderBottom={true} /></a>
-      </Link>
-    </div>
-  ) : null
+  const createCards = (newContent) =>
+    (newContent && newContent.length > 0) ? newContent.map((item, index) =>
+      <div key={index} className={`${(index % 2 ===0) ? 'xl:pr-4' : 'xl:pl-4'} pt-4`}>
+        <Link href={`/${route}/${item.contentfulId}`}>
+          <a><LargeCard content={item} borderBottom={true} /></a>
+        </Link>
+      </div>
+    ) : null
 
   return (
     <div className="main">
       <NextSeo {...metadata[route]} />
-      <div className="w-full grid xl:grid-cols-grid-view">
+      <div className="w-full">
         <Header contentType={route} />
-        <div className="w-full h-full"></div>
-        {contentCards}
+        <InfiniteScrollCards
+          initialContent={content}
+          contentType={route}
+          cardWrapper={createCards}
+          classWrapper="grid xl:grid-cols-grid-view"
+          limit={process.env.homeNewsLimit}
+        />
       </div>
     </div>
   )
@@ -47,6 +55,8 @@ export const getStaticProps = async ({ params }) => {
     const content = await getContent({
       contentType: params.pid,
       noBody: 1,
+      start: 0,
+      end: process.env.homeNewsLimit,
     })
     contentJSON = JSON.stringify(content)
   }

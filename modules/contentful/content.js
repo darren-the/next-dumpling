@@ -6,6 +6,8 @@ export const getContent = async ({
   contentType,
   id,
   noBody,
+  start = 0,
+  end = null,
 }) => {
   const url = process.env.baseURL + `/contentful/${contentType}`
   const params = '?' + [
@@ -25,9 +27,11 @@ export const getContent = async ({
         : null,
     }
   })
-
+  
   const contentSorted = content.sort((a, b) => Date.parse(b.published) - Date.parse(a.published))
-  return contentSorted
+
+  if (!end) return contentSorted
+  return contentSorted.slice(start, end)
 }
 
 export const getContentIds = async (contentType) => {
