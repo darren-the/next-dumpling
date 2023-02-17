@@ -35,7 +35,7 @@ export const getContent = async ({
 }
 
 export const getContentIds = async (contentType) => {
-  const response = await axios.get(process.env.baseURL + `/contentful/${contentType}/?onlyIds=1`)
+  const response = await axios.get(process.env.baseURL + `/contentful/${contentType}/?idOnly=1`)
   return response.data.ids
 } 
 

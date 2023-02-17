@@ -25,7 +25,6 @@ const InfiniteScrollCards = ({
   
     const start = lastIndex
     const end = lastIndex + limit
-    console.log(start, end)
     
     setLastIndex(end)
   
@@ -37,8 +36,6 @@ const InfiniteScrollCards = ({
     })
     
     if (moreContent.length < limit) setHasMore(false)
-    console.log(cards)
-    console.log(cardWrapper(moreContent))
     setCards([
       ...cards,
       cardWrapper(moreContent)

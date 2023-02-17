@@ -40,7 +40,6 @@ const Navbar = () => {
       setNavPosition('left-0')
       setGrayscreenStyle('inline-block')
     }
-    console.log(navPosition)
   }
 
   const mobileHeader = (
